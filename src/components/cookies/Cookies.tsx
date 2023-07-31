@@ -1,12 +1,15 @@
 'use client';
 
-import React, { FC } from 'react';
 import cookies from 'js-cookie';
 import crypto from 'crypto';
-import { strict } from 'assert';
 
 
-
+/**
+ * -----------------------------------------------------------------
+ * @description sets or renews (if exist) a cookie with use token
+ * @returns null
+ * -----------------------------------------------------------------
+ */
 const CookiesComponent = () => {   
 
     // user token
@@ -27,7 +30,8 @@ const CookiesComponent = () => {
     //set cookie
     cookies.set('token', token, { expires: 30, path: '/', sameSite: 'strict' } );     
   
-    return(<></>)
+    return null;
+    // return(<></>)
 }
 
 export default CookiesComponent;

@@ -309,10 +309,10 @@ const calculateTotals = (inputData: CalcInData) => {
     inputData.selectedFeeds.forEach(function(item){
         if(item.feed_type === 'Grain'){
             //daily breakdown
-            let dailyFeed: number = calcResultBulk.grainDaily * (item.feed_usage / 100);
+            let dailyFeed: number = +(calcResultBulk.grainDaily * (item.feed_usage / 100)).toFixed(1);
             dailyFeedBreakdown.push({feedName: item.feed_name, feedVolume: dailyFeed});          
 
-            let twiceADayFeed: number = calcResultBulk.grainTwiceADay * (item.feed_usage / 100);
+            let twiceADayFeed: number = +(calcResultBulk.grainTwiceADay * (item.feed_usage / 100)).toFixed(1);
             twiceDayFeedBreakDown.push({feedName: item.feed_name, feedVolume: twiceADayFeed});           
         }
         else if(item.feed_type === 'Protein'){
@@ -325,10 +325,10 @@ const calculateTotals = (inputData: CalcInData) => {
         }
         else if(item.feed_type === 'Hay'){
             //daily breakdown
-            let dailyFeed: number = calcResultBulk.hayDaily * (item.feed_usage / 100);
+            let dailyFeed: number = +(calcResultBulk.hayDaily * (item.feed_usage / 100)).toFixed(1);
             dailyFeedBreakdown.push({feedName: item.feed_name, feedVolume: dailyFeed});          
 
-            let twiceADayFeed: number = calcResultBulk.hayTwiceADay * (item.feed_usage / 100);
+            let twiceADayFeed: number = +(calcResultBulk.hayTwiceADay * (item.feed_usage / 100)).toFixed(1);
             twiceDayFeedBreakDown.push({feedName: item.feed_name, feedVolume: twiceADayFeed});           
         }
     });

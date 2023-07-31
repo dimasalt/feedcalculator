@@ -64,7 +64,7 @@ export default function FeedCalculator() {
             calculatorInputData.current.endWeight = value;  
         }
     }
-
+  
 
     // <!-- change selected ADG -->
     const onAdgChange = (value: string) => {

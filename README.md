@@ -7,33 +7,6 @@ calculations for other farm animals.
 
 
 
-### To Do List
-
-Still need to add calculations for DM (Dry Matter).
-
-Need to fix calculations floating points.
-
-Need to add user Token reading and updating from API.
-
-Will be replacing Mysql2 and store procedure with Prisma ORM.
-
-Need to make application responsive. Right now works only on large screens.
-
-Code needs a further refactoring.
-
-Some presentation code needs to be split into components (like calculation result displays and validation messages).
-
-Missing 404 page.
-
-Missing normal error handling.
-
-Better front end and desing.
-
-Move error messaging into separate control.
-
-Prevent duplicates in selected feeds.
-
-
 <!-- This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
