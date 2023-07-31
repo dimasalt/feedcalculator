@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+
+@layer components {
+  /* input[type=text] 
+  { 
+      @apply h-9 px-5 border border-gray-400 shadow-md shadow-gray-300; 
+  } */
+}
+
+/* :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+
+
+body {
+    /* font-family: "Roboto", sans-serif !important; */
+    margin: 0;
+    /* font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; */
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #323232;
+    text-align: left;
+    background-color: #f2f7f8;
+}
+
+
+/******** background colors ****************/
+.bg-dark-50, nav {
+    background-color: #323232 !important;
+}
+
+.bg-secondary-light {
+    color : #41464b;
+    background-color: #e2e3e5;    
+}
+
+.navbar-expand-lg .navbar-nav .nav-link:hover{
+    color : #777c82;   
+}
+
+.navbar-expand-lg .navbar-nav .nav-link:hover {
+    color : #777c82 !important;   
+}
+
+tbody, th, thead {
+    background-color: #323232 !important;
+    color : #c9cdd1;   
+    font-style: normal;
+    font-weight: normal;
+}
+
+table tr td {
+  font-weight: 300;
+  font-size: 0.875rem;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+  border-bottom-width: 0.8px;
+  line-height: 1.43;
+  color:rgba(0, 0, 0, 0.87);
+}
+
+select option {
+  font-weight: 300;
+}
+
+
+/** Modal **/
+/* .modal {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 400px;
+}
+
+.bg-black-40 {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.closed {
+  display: none;
+}
+
+.top-1 {
+  top: 10px;
+}
+.right-1 {
+  right: 10px;
+} */

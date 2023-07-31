@@ -1,0 +1,51 @@
+import { Feed } from "@/types/Feed";
+import { useEffect, useState } from "react";
+
+
+// <!-- Fetch average daily gain for livestock -->
+export const useFetchSelectedFeeds = () => {
+
+   
+    const [selectedFeeds, setSelectedFeeds] = useState<Feed[]>([]);    
+    const [updateFeeds, setUpdateFeeds] = useState<number>(0);
+
+    const getSelectedFeeds = async () => {
+
+        console.log('Fetching Feeds');
+
+        const postData = {
+            method: 'POST',
+            Headers: {
+                'Content-Type': 'application/json',
+                'API-Key': process.env.DATA_API_KEY
+            },
+            body: JSON.stringify({})  
+        }
+        const res = await fetch('/api/calculator/feeds/get', postData);
+
+        if (!res.ok) {
+            // This will activate the closest `error.js` Error Boundary
+            throw new Error('Failed to fetch data');
+        }      
+        
+        const response = await res.json();
+        
+        setSelectedFeeds(response.data[0]);
+    }
+    
+
+    useEffect(() =>{
+        getSelectedFeeds();
+    }, [updateFeeds]);
+   
+
+    //function to update selected feeds to trigger useEffect
+    const refetchSelectedFeeds = async (id: number) => {
+        setUpdateFeeds(id);
+    }
+
+    
+    //return selected feeds and option to 
+    // fetch them when selection get updated
+    return {selectedFeeds, refetchSelectedFeeds};
+}
