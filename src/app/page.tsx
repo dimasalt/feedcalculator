@@ -86,11 +86,11 @@ export default function FeedCalculator() {
             setRationResult(result.rationResult);
             setRationBulkResult(result.bulkResult);
 
-            //reset any errors
+            //reset any existing errors
             dispatch(addMessage(''));         
         }
         catch(err:any){
-            //set first error message
+            //take the first error message and set it
             dispatch(addMessage(err.issues[0].message));
         }                 
     }

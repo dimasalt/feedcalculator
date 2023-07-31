@@ -285,22 +285,22 @@ const calculateTotals = (inputData: CalcInData) => {
 
 
     // //calculate daily grain
-    calcResultBulk.grainDaily = currentRequirement.grainLb * inputData.heads;
+    calcResultBulk.grainDaily = +(currentRequirement.grainLb * inputData.heads).toFixed(1);
 
     //daily protein intake
-    calcResultBulk.proteinDaily = currentRequirement.proteinLb * inputData.heads;
+    calcResultBulk.proteinDaily = +(currentRequirement.proteinLb * inputData.heads).toFixed(1);
 
     //daily hay
-    calcResultBulk.hayDaily = currentRequirement.hayTotLb * inputData.heads;
+    calcResultBulk.hayDaily = +(currentRequirement.hayTotLb * inputData.heads).toFixed(1);
 
     //protein twice a day
-    calcResultBulk.proteinTwiceADay = calcResultBulk.proteinDaily / 2;
+    calcResultBulk.proteinTwiceADay = +(calcResultBulk.proteinDaily / 2).toFixed(1);
 
     //grain twice a day
-    calcResultBulk.grainTwiceADay = calcResultBulk.grainDaily / 2;
+    calcResultBulk.grainTwiceADay = +(calcResultBulk.grainDaily / 2).toFixed(1);
 
     //hay twice a day
-    calcResultBulk.hayTwiceADay = calcResultBulk.hayDaily / 2;
+    calcResultBulk.hayTwiceADay = +(calcResultBulk.hayDaily / 2).toFixed(1);
 
     //feed base breakdowns for ration
     let dailyFeedBreakdown: FeedBreakDown[] = [];
