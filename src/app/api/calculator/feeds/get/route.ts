@@ -9,7 +9,11 @@ export const POST = async(request: NextRequest)=>  {
 
     //get variables
     const body = await request.json();       
-    const userToken: string = '1';
+    
+     //get user token
+     const cookie = request.cookies.get('token');
+     const userToken:string = cookie?.value ?? '';
+    //const userToken: string = '1';
 
     try {
         const [rows, fields] = await promisePool.query('call feedGetSelected(?)', [

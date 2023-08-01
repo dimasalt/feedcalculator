@@ -11,7 +11,9 @@ export const POST = async(request: NextRequest) =>  {
 
     const feedItem: Feed = body;
 
-    const userToken:string = '1';
+    //get user token
+    const cookie = request.cookies.get('token');
+    const userToken:string = cookie?.value ?? '';
 
     try {
         const [rows,fields] = await promisePool.query('call feedCreate(?,?,?,?,?,?,?,?)', [

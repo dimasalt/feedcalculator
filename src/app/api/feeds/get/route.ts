@@ -9,7 +9,11 @@ export const POST = async(request: NextRequest)=>  {
 
     //const body = await request.json();   
 
-    const userToken: string = '1';
+    //get user token
+    const cookie = request.cookies.get('token');
+    const userToken:string = cookie?.value ?? '';
+
+    // const userToken: string = '1';
 
     
     try {

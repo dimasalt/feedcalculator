@@ -12,7 +12,11 @@ export const POST = async(request: NextRequest)=>  {
     const id = body.id;
 
     //temporary token
-    const userToken:string = '1';
+    //const userToken:string = '1';
+
+     //get user token
+     const cookie = request.cookies.get('token');
+     const userToken:string = cookie?.value ?? '';    
 
     try {
         const [rows, fields] = await promisePool.query('call feedAddSelected(?, ?)', [
