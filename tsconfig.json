@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/dropdowns/AdgDropDown.tsx", "src/app/ration/page.bak", "src/hooks/useFetchRation.tsx.bak", "src/app/feeds/page.tsx.bak", "src/types/SelectedFeeds.ts.bak", "src/app/page.tsx", "src/app/page copy.tsx.bak", "src/redux/features/selectedFeeds.tsx.bak", "src/hooks/useFetchSelectedFeeds.tsx.bak", "src/services/calculator/feedSelectedAddService.ts.bak", "src/services/calculator/feedSelectedRemoveService.ts.bak", "src/services/calculator/feedSelectedService.ts", "src/utils/calculator.ts.bak", "src/types/SelectedFeed.ts.bak", "src/app/feeds/page copy.tsx.bak", "src/middleware.ts.bak", "src/utils/Validations.tsx.bak"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/dropdowns/AdgDropDown.tsx", "src/app/ration/page.bak", "src/hooks/useFetchRation.tsx.bak", "src/app/feeds/page.tsx.bak", "src/types/SelectedFeeds.ts.bak", "src/app/page.tsx", "src/app/page copy.tsx.bak", "src/redux/features/selectedFeeds.tsx.bak", "src/hooks/useFetchSelectedFeeds.tsx.bak", "src/services/calculator/feedSelectedAddService.ts.bak", "src/services/calculator/feedSelectedRemoveService.ts.bak", "src/services/calculator/feedSelectedService.ts", "src/utils/calculator.ts.bak", "src/types/SelectedFeed.ts.bak", "src/app/feeds/page copy.tsx.bak", "src/middleware.ts.bak", "src/utils/Validations.tsx.bak", "src/redux/features/errorMessage copy.ts.bak"],
   "exclude": ["node_modules"]
 }

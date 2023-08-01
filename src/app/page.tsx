@@ -25,10 +25,11 @@ export default function FeedCalculator() {
     //redux dispatch for setting error messages    
     const dispatch = useDispatch();   
 
+    //results returned from calculations
     const [rationResult, setRationResult] = useState<CalcResultRation[]>([]);
     const [rationBulkResult, setRationBulkResult] = useState<CalcResultFeedBulk>();  
 
-    //information
+    //information 
     const calculatorInputData = useRef <CalcInData>({
         selectedAdg: '0',
         startWeight: '0',
