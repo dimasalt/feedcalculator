@@ -54,7 +54,6 @@ export const calculateFeedRequirement = async(inputData : CalcInData) => {
     };
 
 
-    //let resultRight = resetResult();
     return ({ rationResult : calcResult, bulkResult: calcResultBulk  });
 };
 
@@ -282,7 +281,7 @@ const calculateTotals = (inputData: CalcInData) => {
             currentRequirement = item;
     });
   
-
+    
 
     // //calculate daily grain
     calcResultBulk.grainDaily = +(currentRequirement.grainLb * inputData.heads).toFixed(1);

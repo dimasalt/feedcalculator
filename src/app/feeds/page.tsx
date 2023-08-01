@@ -22,6 +22,7 @@ import { addMessage } from '@/redux/features/errorMessage';
 
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import '../globals.css';
+import ErrorDisplay from '@/components/layout/ErrorDisplay';
 
 
 export default function Feeds() {
@@ -39,8 +40,7 @@ export default function Feeds() {
         is_default: 0
     });
       
-    //redux form errors display
-    const formErrors: string[] = useSelector((state: RootState) => state.message.value);
+    //redux dispatch to add and modify error messages
     const dispatch = useDispatch();   
 
 
@@ -52,7 +52,7 @@ export default function Feeds() {
     useEffect(() => {       
         dispatch(addMessage(''));
 
-       getFeeds();
+        getFeeds();
 
     }, [dispatch]);  
 
@@ -123,7 +123,6 @@ export default function Feeds() {
             }
         }
         catch(err){
-
             toast({
                 variant: "destructive",                
                 description: "Sorry, something went wrong! We couldn't add a new feed item",
@@ -213,8 +212,7 @@ export default function Feeds() {
             feed_type : 'Grain',
             feed_usage: 0,
             is_default: 0
-        });
-        
+        });        
     }
 
   return (
@@ -231,17 +229,8 @@ export default function Feeds() {
         </div>
 
 
-        {/* <!-- error hundling for form input --> */}
-        <div className='container max-w-screen-xl mx-auto mt-7'>           
-            {formErrors.map((e) => {
-                return (
-                    <div className='bg-red-800 text-white shadow-md shadow-gray-300 col-span-9 text-lg p-4 mb-7 mt-0 transition duration-500 ease-in-out' key={e}>
-                        <i className="bi bi-exclamation-circle text-white text-xl me-3"></i>
-                        {e}
-                    </div>
-                );
-            })}
-        </div>
+        {/* <!-- error hundling for form input --> */}  
+        <ErrorDisplay componentID="errorDisplayId" />             
 
 
         {/* <!-- input fields for feed --> */}

@@ -24,7 +24,7 @@ const DefaultFeedsDropdown = ({componentId} : DefaultFeedsDropdownProps) => {
     //feed add selectedFeed redux hook
     const [addSelectedFeed] = useAddSelectedFeedMutation();
 
-    // dispatch to set future error messages
+    // dispatch to set error messages
     const dispatch = useDispatch();
 
     
@@ -45,8 +45,7 @@ const DefaultFeedsDropdown = ({componentId} : DefaultFeedsDropdownProps) => {
       
         //preventing page from reload
         e.preventDefault();
-
-        //if feed id is not 0 only then insert it
+       
         try {
             //validate
             const id:number = parseInt(feedId.current);

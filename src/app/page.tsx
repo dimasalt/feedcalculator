@@ -12,18 +12,17 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import { SelectedFeedsTable } from "@/components/tables/SelectedFeedsTable";
 import { CalcInData } from "@/types/CalcInData";
 import { calculateFeedRequirement } from "@/utils/calculator";
-import { CalcResultFeedBulk, CalcResultRation, FeedBreakDown } from "@/types/CalcResultData";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux/store/store";
+import { CalcResultFeedBulk, CalcResultRation } from "@/types/CalcResultData";
+import { useDispatch } from "react-redux";
 import { calculatorSchema } from "@/validations/schemas/CalculatorSchema";
 import { addMessage } from "@/redux/features/errorMessage";
+import ErrorDisplay from "@/components/layout/ErrorDisplay";
 
 
 
 export default function FeedCalculator() {
 
-    //redux form errors display
-    const formErrors: string[] = useSelector((state: RootState) => state.message.value)
+    //redux dispatch for setting error messages    
     const dispatch = useDispatch();   
 
     const [rationResult, setRationResult] = useState<CalcResultRation[]>([]);
@@ -107,21 +106,8 @@ export default function FeedCalculator() {
         </div>
      
 
-         {/* <!-- error hundling for form input --> */}             
-        <div className="container max-w-screen-xl mx-auto flex justify-around">           
-            {formErrors.map((e) => {                    
-                return (
-                    <>
-                    <div className='w-full mt-4'>          
-                        <div className='bg-red-800 text-white shadow-md shadow-gray-300 text-lg py-2 px-4' key={e}>
-                            <i className="bi bi-exclamation-circle text-white text-xl me-3"></i>
-                            {e}
-                        </div>
-                    </div>
-                    </>
-                );
-            })}
-        </div>
+         {/* <!-- error hundling for form input --> */}  
+         <ErrorDisplay componentID="errorDisplayId" />                  
          
 
         <div className="container max-w-screen-xl mx-auto flex justify-around">                      

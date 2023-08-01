@@ -30,8 +30,7 @@ const CookiesComponent = () => {
     //set cookie
     cookies.set('token', token, { expires: 30, path: '/', sameSite: 'strict' } );     
   
-    return null;
-    // return(<></>)
+    return null;  
 }
 
 export default CookiesComponent;

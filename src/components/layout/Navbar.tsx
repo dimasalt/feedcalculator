@@ -16,7 +16,7 @@ export default function Navbar() {
                 </div>                    
 
                 {/* <!-- an actual middle menu --> */}
-                <div className=" text-gray-400  mt-2 text-lg">                       
+                <div className=" text-gray-400 me-10 flex justify-center mt-2 text-lg">                       
                     <Link className="hover:text-gray-100 me-8" id='test' href="/">
                         <i className="bi bi-calculator me-1"></i>
                         Calculator
