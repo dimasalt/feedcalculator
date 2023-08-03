@@ -1,6 +1,7 @@
 'use client';
 
 import { ChangeEvent, FormEvent, MouseEvent, useEffect, useState } from 'react';
+import { useInvalidateSelectedFeedTagMutation } from "@/redux/service/selectedFeedsApi";
 
 import { Feed } from '@/types/Feed';
 
@@ -40,6 +41,9 @@ export default function Feeds() {
         is_default: 0
     });
       
+    //redux api
+    const [invalidateSelectedFeedTag] = useInvalidateSelectedFeedTagMutation();
+
     //redux dispatch to add and modify error messages
     const dispatch = useDispatch();   
 
@@ -180,6 +184,15 @@ export default function Feeds() {
                     //title: "Feed Item Removal",
                     description: "Feed item has been successfully removed",
                 });
+
+
+                /**
+                 * Have to invalidate cache of selected user feeds in redux toolkit
+                 * When feed is removed from the feed table, it's also removed from the 
+                 * user selected table, but redux toolkit doesn't know about it and needs
+                 * to be told to refetch the query instead of using an old cached one.
+                 */
+                invalidateSelectedFeedTag();
             }              
         }
         catch(err){

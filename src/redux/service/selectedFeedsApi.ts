@@ -36,7 +36,14 @@ export const selectedFeedsApi = createApi({
                 body: { id: id} 
             }),
             invalidatesTags: ['SelectedFeeds']
-        })
+        }),
+        invalidateSelectedFeedTag: builder.mutation<void, void>({
+            query: () => ({
+                url: ''
+            }),
+            invalidatesTags: ['SelectedFeeds']
+        }),
+       
     })
 });
 
@@ -44,5 +51,6 @@ export const selectedFeedsApi = createApi({
 export const { 
     useGetSelectedFeedsQuery,
     useRemoveSelectedFeedMutation,
-    useAddSelectedFeedMutation 
+    useAddSelectedFeedMutation,
+    useInvalidateSelectedFeedTagMutation
 } = selectedFeedsApi;
