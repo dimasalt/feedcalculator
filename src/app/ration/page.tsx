@@ -13,7 +13,6 @@ import { rationService } from "@/services/ration/rationService";
 
 import RationTable from "@/components/tables/RationTable";
 
-// import '../../../public/assets/bootstrap-icons-1.10.3/bootstrap-icons.css';
 import '../globals.css';
 
 

@@ -1,7 +1,8 @@
 'use client';
 
 import { ChangeEvent, FormEvent, MouseEvent, useEffect, useState } from 'react';
-import { useInvalidateSelectedFeedTagMutation } from "@/redux/service/selectedFeedsApi";
+import { selectedFeedsApi } from "@/redux/service/selectedFeedsApi";
+
 
 import { Feed } from '@/types/Feed';
 
@@ -18,7 +19,6 @@ import { FeedForm } from '../../components/inputforms/FeedForm';
 import { useToast } from "@/components/ui/use-toast"
 
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@/redux/store/store';
 import { addMessage } from '@/redux/features/errorMessage';
 
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
@@ -40,13 +40,9 @@ export default function Feeds() {
         feed_usage: 0,
         is_default: 0
     });
-      
-    //redux api
-    const [invalidateSelectedFeedTag] = useInvalidateSelectedFeedTagMutation();
+         
 
-    //redux dispatch to add and modify error messages
     const dispatch = useDispatch();   
-
 
     // use toast from shadcn
     const { toast } = useToast();
@@ -120,7 +116,6 @@ export default function Feeds() {
                 //clear feed item
                 clearFeedItem();
 
-
                 toast({                
                     description: "Feed item has been successfully added",
                 });
@@ -192,7 +187,7 @@ export default function Feeds() {
                  * user selected table, but redux toolkit doesn't know about it and needs
                  * to be told to refetch the query instead of using an old cached one.
                  */
-                invalidateSelectedFeedTag();
+                dispatch(selectedFeedsApi.util.invalidateTags(['SelectedFeeds']));              
             }              
         }
         catch(err){

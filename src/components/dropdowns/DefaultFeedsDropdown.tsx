@@ -1,12 +1,19 @@
+import Link from "next/link";
+import { FormEvent, useRef } from "react";
+
+import { useDispatch } from "react-redux";
+import { useAddSelectedFeedMutation, useGetSelectedFeedsQuery } from "@/redux/service/selectedFeedsApi";
+
+
 import { useFetchFeeds } from "@/hooks/useFetchFeeds";
 import { addMessage } from "@/redux/features/errorMessage";
-import { useAddSelectedFeedMutation } from "@/redux/service/selectedFeedsApi";
+
 import { Feed } from "@/types/Feed";
-import Link from "next/link";
-import { FormEvent, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+
 import { toast } from "../ui/use-toast";
+
 import { selectedFeedItemSchema } from "@/validations/schemas/FeedSelectSchema";
+
 
 
 export interface DefaultFeedsDropdownProps {
@@ -21,11 +28,13 @@ const DefaultFeedsDropdown = ({componentId} : DefaultFeedsDropdownProps) => {
     //selected feed item to pass up to a page to update selected feeds table
     const feedId = useRef('0'); 
 
-    //feed add selectedFeed redux hook
-    const [addSelectedFeed] = useAddSelectedFeedMutation();
 
-    // dispatch to set error messages
-    const dispatch = useDispatch();
+     // dispatch to set error messages
+     const dispatch = useDispatch();
+    //feed add selectedFeed redux hook
+    const [addSelectedFeed] = useAddSelectedFeedMutation();    
+    //selected feeds table records
+    const { data, error, isLoading } = useGetSelectedFeedsQuery();
 
     
     //on dropdown selected feed change
@@ -43,23 +52,43 @@ const DefaultFeedsDropdown = ({componentId} : DefaultFeedsDropdownProps) => {
     //submit new item for insertion
     const hundleSelectedFeedSumbit = async(e: FormEvent) => {      
       
+        
         //preventing page from reload
         e.preventDefault();
        
         try {
             //validate
             const id:number = parseInt(feedId.current);
-            selectedFeedItemSchema.parse({id : id});               
+            selectedFeedItemSchema.parse({id : id});  
             
-            addSelectedFeed(id);        
+            //no duplicates
+            let noDuplicates: boolean = true;
 
-            //reset error message
-            dispatch(addMessage(''));    
-            
-            //display success message
-            toast({                
-                description: "New default feed has been added",
+            //check for duplicates // for some reason data?.some method did not work
+            data?.forEach(item => {
+                if(item.id === id) noDuplicates = false;
             });
+
+
+            if(noDuplicates === true){        
+                //add feed to the selected feed table
+                addSelectedFeed(id);     
+
+                //reset error message
+                dispatch(addMessage(''));    
+                
+                //display success message
+                toast({                
+                    description: "New selected feed has been added",
+                });
+            }
+            else{
+                //display success message
+                toast({      
+                    variant: "destructive",          
+                    description: "We're sorry but the feed you have selected, is already in selected feeds table",
+                });
+            }                       
         }
         catch(err){
             dispatch(addMessage('Feed selection cannot be empty'));       
