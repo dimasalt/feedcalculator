@@ -1,6 +1,5 @@
 "use client";
 
-
 import { FormEvent, useEffect, useRef, useState } from "react";
 
 import AdgDropdown from "@/components/dropdowns/AdgDropDown";

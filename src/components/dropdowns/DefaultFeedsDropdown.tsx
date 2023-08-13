@@ -3,16 +3,14 @@ import { FormEvent, useRef } from "react";
 
 import { useDispatch } from "react-redux";
 import { useAddSelectedFeedMutation, useGetSelectedFeedsQuery } from "@/redux/service/selectedFeedsApi";
-
-
-import { useFetchFeeds } from "@/hooks/useFetchFeeds";
 import { addMessage } from "@/redux/features/errorMessage";
 
+import { useFetchFeeds } from "@/hooks/useFetchFeeds";
 import { Feed } from "@/types/Feed";
 
-import { toast } from "../ui/use-toast";
-
 import { selectedFeedItemSchema } from "@/validations/schemas/FeedSelectSchema";
+
+import { toast } from "../ui/use-toast";
 
 
 
@@ -50,8 +48,7 @@ const DefaultFeedsDropdown = ({componentId} : DefaultFeedsDropdownProps) => {
     }
 
     //submit new item for insertion
-    const hundleSelectedFeedSumbit = async(e: FormEvent) => {      
-      
+    const hundleSelectedFeedSumbit = async(e: FormEvent) => {            
         
         //preventing page from reload
         e.preventDefault();
