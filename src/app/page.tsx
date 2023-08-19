@@ -107,8 +107,8 @@ export default function FeedCalculator() {
         </div>
      
 
-         {/* <!-- error hundling for form input --> */}  
-         <ErrorDisplay componentID="errorDisplayId" />                  
+        {/* <!-- error hundling for form input --> */}  
+        <ErrorDisplay componentID="errorDisplayId" />                  
          
 
         <div className="container max-w-screen-xl mx-auto flex justify-around">                      
@@ -120,36 +120,36 @@ export default function FeedCalculator() {
                 
 
                 <form onSubmit={(e) => calculateRation(e)}>
-                {/* <!-- calculator input form --> */}
-                <div className="grid grid-cols-4 mt-8 shadow-md shadow-gray-300">                   
-                    <div className="col-span-1">
-                        <label htmlFor="weight_start_select">Weight Start</label>
-                        <StartWeightDropDown selectedStartWeightValue={calculatorInputData.current.startWeight} onWeightChange={onWeightChange} startWeight={startWeight} id="weight_start_select" />                            
+                    {/* <!-- calculator input form --> */}
+                    <div className="grid grid-cols-4 mt-8 shadow-md shadow-gray-300">                   
+                        <div className="col-span-1">
+                            <label htmlFor="weight_start_select">Weight Start</label>
+                            <StartWeightDropDown selectedStartWeightValue={calculatorInputData.current.startWeight} onWeightChange={onWeightChange} startWeight={startWeight} id="weight_start_select" />                            
+                        </div>
+                        <div className="col-span-1">
+                            <label htmlFor="weight_end_select">Weight End</label>
+                            <EndWeightDropDown selectedEndWeightValue={calculatorInputData.current.endWeight} onWeightChange={onWeightChange} endWeight={endWeight} id="weight_end_select" />                        
+                        </div>                  
+                        <div className="col-span-1">
+                            <label htmlFor="adg_select">ADG (lb)</label>                                  
+                            <AdgDropdown selectedAdgValue={calculatorInputData.current.selectedAdg} onAdgChange={onAdgChange} adgs={adgs} id="adg_select" />                      
+                        </div>
+                        
+                        <div className="col-span-1">
+                            <label htmlFor="text_heads"># of Heads</label>
+                            <input type="text" onChange={(e) => onHeadsChange(e.target.value)} className="rounded-none w-full border border-gray-400 h-8 ps-3" id="text_heads" />
+                        </div>                           
                     </div>
-                    <div className="col-span-1">
-                        <label htmlFor="weight_end_select">Weight End</label>
-                        <EndWeightDropDown selectedEndWeightValue={calculatorInputData.current.endWeight} onWeightChange={onWeightChange} endWeight={endWeight} id="weight_end_select" />                        
-                    </div>                  
-                    <div className="col-span-1">
-                        <label htmlFor="adg_select">ADG (lb)</label>                                  
-                        <AdgDropdown selectedAdgValue={calculatorInputData.current.selectedAdg} onAdgChange={onAdgChange} adgs={adgs} id="adg_select" />                      
-                    </div>
-                    
-                    <div className="col-span-1">
-                        <label htmlFor="text_heads"># of Heads</label>
-                        <input type="text" onChange={(e) => onHeadsChange(e.target.value)} className="rounded-none w-full border border-gray-400 h-8 ps-3" id="text_heads" />
-                    </div>                           
-                </div>
 
-                <div className="grid grid-cols-4 mt-4">                              
-                    <div className="col-span-1 col-start-4 flex justify-end">
-                        <button className="col-span-1 w-full h-9 bg-neutral-700 text-white rounded-none shadow-md shadow-gray-300 font-semibold" 
-                                type="submit" id="btn_calculate">
-                            <i className="bi bi-calculator me-2"></i> 
-                            Calculate 
-                        </button>         
-                    </div>                   
-                </div>
+                    <div className="grid grid-cols-4 mt-4">                              
+                        <div className="col-span-1 col-start-4 flex justify-end">
+                            <button className="col-span-1 w-full h-9 bg-neutral-700 text-white text-lg rounded shadow-md shadow-gray-300 " 
+                                    type="submit" id="btn_calculate">
+                                <i className="bi bi-calculator me-2"></i> 
+                                Calculate 
+                            </button>         
+                        </div>                   
+                    </div>
                 </form>
             </div>
             {/* <!-- end of left side --> */}
