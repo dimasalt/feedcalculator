@@ -42,4 +42,4 @@ const ErrorDisplay = ({componentID}: ErrorDisplayProps) => {
   )
 }
 
-export default ErrorDisplay;;
+export default ErrorDisplay;

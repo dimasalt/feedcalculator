@@ -19,6 +19,7 @@ import { addMessage } from "@/redux/features/errorMessage";
 import ErrorDisplay from "@/components/layout/ErrorDisplay";
 import CalculatorResultsForWeight from "@/components/tables/CalculatorResultsForWeight";
 import { CalculatorResultsForBulk } from "@/components/tables/CalculatorResultsForBulk";
+import PageHeadline from "@/components/layout/PageHeadline";
 
 
 
@@ -96,15 +97,9 @@ export default function FeedCalculator() {
     }
 
   return (
-    <>              
-        {/* <!-- table to display information --> */}       
-        <div className='container max-w-screen-xl mx-auto'>
-            <div className='flex justify-between mt-11 border-b-2 pb-3'>
-                <div className="flex justify-start">
-                    <h2 className="text-slate-700 text-4xl">Calculator</h2>
-                </div>                          
-            </div>
-        </div>
+    <>                     
+        {/* <!-- page headline --> */}
+        <PageHeadline headline="Calculator" />       
      
 
         {/* <!-- error hundling for form input --> */}  
@@ -155,7 +150,7 @@ export default function FeedCalculator() {
             {/* <!-- end of left side --> */}
 
 
-
+             {/* <!-- table to display information --> */}       
             {/* <!-- right side --> */}
             <div className=" w-5/12 ms-5 mt-8">
                 {/* <!-- feeds selected by user for calculations --> */}                          
@@ -175,7 +170,10 @@ export default function FeedCalculator() {
 
             {/* <!-- right side for a bulk feed based on amount of animals on the farm --> */}
             <div className={rationBulkResult?.averageWeight ?? 0 > 0 ? 'w-5/12 mt-6 py-2 ms-5 bg-white shadow-md' : 'hidden' } >
-                <CalculatorResultsForBulk rationBulkResult={rationBulkResult} animalCount={calculatorInputData.current.heads} />             
+                <CalculatorResultsForBulk 
+                    rationBulkResult={rationBulkResult} 
+                    animalCount={calculatorInputData.current.heads} 
+                />             
             </div>
         </div>
     </>

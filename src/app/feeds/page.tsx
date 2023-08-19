@@ -26,6 +26,7 @@ import ErrorDisplay from '@/components/layout/ErrorDisplay';
 
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import '../globals.css';
+import PageHeadline from '@/components/layout/PageHeadline';
 
 
 
@@ -115,7 +116,6 @@ export default function Feeds() {
                 //get list of feeds from database                     
                 getFeeds();
                 
-
                 //clear feed item
                 clearFeedItem();
 
@@ -229,16 +229,8 @@ export default function Feeds() {
   return (
     <>
         {/* <!-- table to display information --> */}       
-        <div className='container pb-3 max-w-screen-xl mx-auto border-b-2'>
-            <div className='flex justify-between mt-11'>
-                <div className="flex justify-start">
-                    <h2 className=" text-slate-700 text-4xl">                  
-                        Feed Management   
-                    </h2>
-                </div>           
-            </div>        
-        </div>
-
+        <PageHeadline headline='Feed Management' />      
+        
 
         {/* <!-- error hundling for form input --> */}  
         <ErrorDisplay componentID="errorDisplayId" />             
