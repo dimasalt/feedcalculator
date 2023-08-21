@@ -11,7 +11,10 @@ export default function NotFoundPage() {
                 </h1>                               
             </div>
             <div className='container max-w-screen-xl mx-auto flex justify-center'>
-                <p className="my-2 w-full text-gray-800">Sorry about that! Please <Link href="/" className="font-semibold text-green-700 underline"> visit our hompage </Link> to get where you need to go.</p>            
+                <p className="my-2 w-full text-gray-800">Sorry about that! Please 
+                    <Link href="/" className="font-semibold text-green-700 underline"> visit our homepage </Link> 
+                    to get where you need to go.
+                </p>            
             </div>
         </>
     )
