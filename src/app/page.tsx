@@ -6,8 +6,6 @@ import AdgDropdown from "@/components/dropdowns/AdgDropDown";
 import DefaultFeedsDropdown from "@/components/dropdowns/DefaultFeedsDropdown";
 import EndWeightDropDown from "@/components/dropdowns/EndWeightDropDown";
 import StartWeightDropDown from "@/components/dropdowns/StartWeightDropDown";
-import { useFetchAdg } from "@/hooks/useFetchAdg";
-import { useFetchWeight } from "@/hooks/useFetchWeight";
 
 import { SelectedFeedsTable } from "@/components/tables/SelectedFeedsTable";
 import { CalcInData } from "@/types/CalcInData";
@@ -49,12 +47,6 @@ export default function FeedCalculator() {
     }, [dispatch]);  
 
 
-    // <!-- Average daily gain -->
-    const[adgs]:any = useFetchAdg();
-
-    // <!-- call for custom hook to get start weight and end weight -->
-    const [startWeight, endWeight]: any = useFetchWeight();
-    
 
     //<!-- change selected weight -->
     const onWeightChange = (value:string, number: number) => {
@@ -119,15 +111,15 @@ export default function FeedCalculator() {
                     <div className="grid grid-cols-4 mt-8 shadow-md shadow-gray-300">                   
                         <div className="col-span-1">
                             <label htmlFor="weight_start_select">Weight Start</label>
-                            <StartWeightDropDown selectedStartWeightValue={calculatorInputData.current.startWeight} onWeightChange={onWeightChange} startWeight={startWeight} id="weight_start_select" />                            
+                            <StartWeightDropDown selectedStartWeightValue={calculatorInputData.current.startWeight} onWeightChange={onWeightChange} />                            
                         </div>
                         <div className="col-span-1">
                             <label htmlFor="weight_end_select">Weight End</label>
-                            <EndWeightDropDown selectedEndWeightValue={calculatorInputData.current.endWeight} onWeightChange={onWeightChange} endWeight={endWeight} id="weight_end_select" />                        
+                            <EndWeightDropDown selectedEndWeightValue={calculatorInputData.current.endWeight} onWeightChange={onWeightChange} />                        
                         </div>                  
                         <div className="col-span-1">
                             <label htmlFor="adg_select">ADG (lb)</label>                                  
-                            <AdgDropdown selectedAdgValue={calculatorInputData.current.selectedAdg} onAdgChange={onAdgChange} adgs={adgs} id="adg_select" />                      
+                            <AdgDropdown selectedAdgValue={calculatorInputData.current.selectedAdg} onAdgChange={onAdgChange} />                      
                         </div>
                         
                         <div className="col-span-1">

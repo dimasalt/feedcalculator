@@ -15,6 +15,7 @@ import { feedAddService } from '@/services/feed/feedAddService';
 
 import FeedRemovalModal from '@/components/modals/FeedRemovalModal';
 
+import PageHeadline from '@/components/layout/PageHeadline';
 import { FeedDisplayTable } from '@/components/tables/FeedDisplayTable';
 import { FeedForm } from '../../components/inputforms/FeedForm';
 import { useToast } from "@/components/ui/use-toast"
@@ -26,7 +27,7 @@ import ErrorDisplay from '@/components/layout/ErrorDisplay';
 
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import '../globals.css';
-import PageHeadline from '@/components/layout/PageHeadline';
+
 
 
 

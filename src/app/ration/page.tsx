@@ -7,8 +7,7 @@ import AdgDropdown from '@/components/dropdowns/AdgDropDown';
 import StartWeightDropDown from '@/components/dropdowns/StartWeightDropDown';
 import EndWeightDropDown from '@/components/dropdowns/EndWeightDropDown';
 
-import { useFetchAdg } from "@/hooks/useFetchAdg";
-import { WeightsInterface, useFetchWeight } from "@/hooks/useFetchWeight";
+import { WeightsInterface } from "@/hooks/useFetchWeight";
 import { rationService } from "@/services/ration/rationService";
 
 import RationTable from "@/components/tables/RationTable";
@@ -25,25 +24,20 @@ export default function Ration() {
         endValue : '400'
     }
 
-    // adg -> average daily gain
+    // adg -> average daily gain and weights
     const selectedAdg = useRef<string>('0'); 
-    const[adgs]:any = useFetchAdg();
-
-
-    //weights
     const selectedStartWeight = useRef<string>(weights.startValue);
     const selectedEndWeight = useRef<string>(weights.endValue);
 
-    // call for custome hook
-    const [startWeight, endWeight]: any = useFetchWeight();
+
 
     //rations for the selected daily rations/messures
     const [ration, setRation] = useState<any[]>([]);
 
     
     //calls rationService which makes call to API and gets ration in assigned range from mysql database
-    const callRationService = () => {
-        rationService(selectedAdg.current, selectedStartWeight.current, selectedEndWeight.current)
+    const callRationService = async () => {
+        await rationService(selectedAdg.current, selectedStartWeight.current, selectedEndWeight.current)
         .then((result) => {            
             setRation(result);
         });        
@@ -64,12 +58,11 @@ export default function Ration() {
     }
 
     //<!-- change selected weight -->
-    const onWeightChange = (value:string, number: number) => {
+    const onWeightChange = (value:string, number: number) => {        
         
         if(number === 1) // start weight
-            selectedStartWeight.current = value;
-        
-        if(number === 2) //end weight
+            selectedStartWeight.current = value;        
+        else if(number === 2) //end weight
             selectedEndWeight.current = value;
 
         callRationService();
@@ -88,21 +81,20 @@ export default function Ration() {
 
                 {/* <!-- Page name and Search and sort options --> */}
                 <div className="flex justify-end pe-0">                   
-                    <div className="">
-                        <label htmlFor="adg_select" className=" sr-only">Average Daily Gain</label>
-                        <AdgDropdown selectedAdgValue={selectedAdg.current} 
-                            onAdgChange={onAdgChange} adgs={adgs} id="adg_select" />
+                    <div>
+                        <label htmlFor="adg_select" className="sr-only">Average Daily Gain</label>
+                        <AdgDropdown selectedAdgValue={selectedAdg.current} onAdgChange={onAdgChange} />
                     </div>
                     <div>
-                        <label htmlFor="weight_start_select" className=" sr-only">Average Daily Gain</label>
+                        <label htmlFor="weight_start_select" className="sr-only">Average Daily Gain</label>
                         <StartWeightDropDown selectedStartWeightValue={selectedStartWeight.current} 
-                            onWeightChange={onWeightChange} startWeight={startWeight} id="weight_start_select" />                
+                            onWeightChange={onWeightChange} />                
                     </div>    
 
                     <div>
-                        <label htmlFor="weight_end_select" className=" sr-only">Average Daily Gain</label>
+                        <label htmlFor="weight_end_select" className="sr-only">Average Daily Gain</label>
                         <EndWeightDropDown selectedEndWeightValue={selectedEndWeight.current} 
-                            onWeightChange={onWeightChange} endWeight={endWeight} id="weight_end_select" />                   
+                            onWeightChange={onWeightChange} />                   
                     </div>                          
                 </div>
             </div>

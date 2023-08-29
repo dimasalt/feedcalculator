@@ -29,7 +29,7 @@ export const FeedForm = ({feedItem, hundleChange, onClickClearAddFeedForm, hundl
                     </div>
                     <div className="col-span-1">
                         <label htmlFor="text_dm" className="flex flex-wrap ps-2">DM %</label>
-                        <input type='text' value={feedItem.feed_dm}  onChange={(e) => hundleChange(e)} name='feed_dm' className="h-9 w-full px-5 border border-gray-400" id="text_dm" placeholder="Dry Matter" />
+                        <input type='number' value={feedItem.feed_dm}  onChange={(e) => hundleChange(e)} name='feed_dm' className="h-9 w-full px-5 border border-gray-400" id="text_dm" placeholder="Dry Matter" />
                     </div>
                     <div className="col-span-1">
                         <label htmlFor="select_type" className='flex flex-wrap ps-2'>Feed Type</label>
@@ -43,7 +43,7 @@ export const FeedForm = ({feedItem, hundleChange, onClickClearAddFeedForm, hundl
                     </div>
                     <div className="col-span-1">
                         <label htmlFor="text_feed_usage" className='flex flex-wrap ps-2'>Usage %</label>
-                        <input type='text' value={feedItem.feed_usage} onChange={(e) => hundleChange(e)} name='feed_usage' className="h-9 w-full px-5 border border-gray-400" id="text_feed_usage" placeholder="Usage %" />
+                        <input type='number' value={feedItem.feed_usage} onChange={(e) => hundleChange(e)} name='feed_usage' className="h-9 w-full px-5 border border-gray-400" id="text_feed_usage" placeholder="Usage %" />
                     </div>         
                     <div className="col-span-3 md:col-span-2">            
                         <button type='submit' className='h-9 mt-6 w-1/2 bg-green-800 text-white font-semibold'> 

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 // start and end weight interface
 export interface WeightsInterface {
@@ -11,8 +11,7 @@ export interface WeightsInterface {
 export const useFetchWeight = () => {
 
     //start weight 
-    const [startWeight, setStartWeights] = useState<any[]>([]);    
-    const [endWeight, setEndWeights] = useState<any[]>([]);    
+    const [weight, setWeights] = useState<any[]>([]);    
 
 
     const getWeights = async () => {
@@ -37,11 +36,8 @@ export const useFetchWeight = () => {
         /** <!-- set all weights -->
          *  start weight full list and default selected start weight for the drop down
          */
-        setStartWeights(response.data[0]);         
-       
-
-        // end weight and default selected end weight for the drop down
-        setEndWeights(response.data[0]);             
+        setWeights(response.data[0]);         
+               
     }
 
     useEffect(() =>{
@@ -50,5 +46,5 @@ export const useFetchWeight = () => {
     
     }, []);
 
-    return [startWeight, endWeight];
+    return [weight];
 }
