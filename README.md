@@ -2,7 +2,10 @@
 
 Free feed calculator for raising baby calves and finishing cattle up to 1000 lbs weight. 
 
-This software is working prototype and is currently in active development. Eventually more cattle types will be added as well as
+git st
+
+This software is working prototype and is currently in active development. An online working website coming soon... 
+Eventually more cattle types will be added as well as
 calculations for other farm animals.
 
 
