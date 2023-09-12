@@ -99,66 +99,6 @@ export default function Ration() {
             </div>
         </div>
 
-
-        {/* <div className='container max-w-screen-xl mx-auto'>
-
-            <div className='flex justify-between mt-11 border-b-2 pb-3 w-full'>
-
-                <div className="flex justify-start w-full">
-                    <h2 className=" text-slate-700 text-4xl">Ration Requirements</h2>
-                </div>           
-
-              
-                <div className="flex justify-end pe-0 w-full md:w-3/5">                   
-                    <div>
-                        <label htmlFor="adg_select" className="sr-only">Average Daily Gain</label>
-                        <AdgDropdown selectedAdgValue={selectedAdg.current} onAdgChange={onAdgChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="weight_start_select" className="sr-only">Average Daily Gain</label>
-                        <StartWeightDropDown selectedStartWeightValue={selectedStartWeight.current} 
-                            onWeightChange={onWeightChange} />                
-                    </div>    
-
-                    <div>
-                        <label htmlFor="weight_end_select" className="sr-only">Average Daily Gain</label>
-                        <EndWeightDropDown selectedEndWeightValue={selectedEndWeight.current} 
-                            onWeightChange={onWeightChange} />                   
-                    </div>                          
-                </div>
-            </div>
-        </div> */}
-
-
-
-        {/* <div className='container max-w-screen-xl mx-auto'>
-
-            <div className='flex justify-between mt-11 border-b-2 pb-3 w-full'>
-
-                <div className="flex justify-start w-full">
-                    <h2 className=" text-slate-700 text-4xl">Ration Requirements</h2>
-                </div>           
-
-              
-                <div className="flex justify-end pe-0 w-full md:w-3/5">                   
-                    <div>
-                        <label htmlFor="adg_select" className="sr-only">Average Daily Gain</label>
-                        <AdgDropdown selectedAdgValue={selectedAdg.current} onAdgChange={onAdgChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="weight_start_select" className="sr-only">Average Daily Gain</label>
-                        <StartWeightDropDown selectedStartWeightValue={selectedStartWeight.current} 
-                            onWeightChange={onWeightChange} />                
-                    </div>    
-
-                    <div>
-                        <label htmlFor="weight_end_select" className="sr-only">Average Daily Gain</label>
-                        <EndWeightDropDown selectedEndWeightValue={selectedEndWeight.current} 
-                            onWeightChange={onWeightChange} />                   
-                    </div>                          
-                </div>
-            </div>
-        </div> */}
         
         <div className="container max-w-screen-xl mx-auto">
             <div className='flex justify-end mt-2'>
