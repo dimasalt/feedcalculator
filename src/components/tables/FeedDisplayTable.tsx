@@ -35,7 +35,7 @@ export const FeedDisplayTable = ({feeds, onClickRemoveModal}: FeedDisplayTablePr
                                 { item.is_default === 0 ?
                                     // <!-- if feed is not default allow it to be removed -->
                                     <a href="#" className='text-2xl ms-2 group relative' onClick={() => onClickRemoveModal(item.id)}>                     
-                                        <i className="bi bi-trash3 text-red-600 text-base"></i>
+                                        <i className="bi bi-trash3 text-red-600 text-base me-5"></i>
                                         <span className="pointer-events-none absolute -top-7 -right-10 w-max rounded bg-gray-700 px-5 py-1 text-sm font-medium text-gray-50 opacity-0 shadow transition-opacity group-hover:opacity-100">
                                             Remove feed
                                         </span>                   

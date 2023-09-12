@@ -41,24 +41,24 @@ export default function RootLayout({ children, }: { children: React.ReactNode})
         </head>
         <body>
 			
-			{/* <!-- cookie component to initiate cookies every time on every page --> */}
-			<CookiesComponent />
+        {/* <!-- cookie component to initiate cookies every time on every page --> */}
+        <CookiesComponent />
 
-          {/* <!-- Navbar --> */}
-          <Navbar />
+            {/* <!-- Navbar --> */}
+            <Navbar />
 
-          {/* <!-- main body --> */}
-          <main role="main">        		  	 
-              {/* <!-- page content --> */}             
-              <ReduxProvider>			  
-                {children}
-              </ReduxProvider>
+            {/* <!-- main body --> */}
+            <main role="main">        		  	 
+                {/* <!-- page content --> */}             
+                <ReduxProvider>			  
+                  {children}
+                </ReduxProvider>
 
-          </main>
-          {/* <!-- Footer --> */}
-          <Footer />
+            </main>
+            {/* <!-- Footer --> */}
+            <Footer />
 
-          <Toaster />
+            <Toaster />
         </body>
       </html> 
     </>

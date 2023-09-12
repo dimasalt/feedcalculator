@@ -28,9 +28,9 @@
 
 
 body {
-    /* font-family: "Roboto", sans-serif !important; */
-    margin: 0;
-    /* font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; */
+    /* margin: 0;
+    padding: 0;
+    width: 100%; */
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
     font-weight: 300;
@@ -38,7 +38,7 @@ body {
     color: #323232;
     text-align: left;
     background-color: #f2f7f8;
-}
+} 
 
 
 /******** background colors ****************/

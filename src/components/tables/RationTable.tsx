@@ -29,12 +29,12 @@ const RationTable = ({ration}: RationTableProps) => {
                 {ration.map((item:any) => {
                     return(
                         <tr key={item.id}>
-                            <td className='ps-3 py-2 bg-white text-black border-b'>{item.weight}</td>
-                            <td className='ps-3 py-2 bg-white text-black border-b'>{item.animal_type }</td>
-                            <td className='ps-9 py-2 bg-white text-black border-b'>{item.adg}</td>
-                            <td className='ps-3 py-2 bg-white text-black border-b'>{item.cp }</td>
-                            <td className='ps-3 py-2 bg-white text-black border-b'>{item.tdn}</td>
-                            <td className='ps-9 py-2 bg-white text-black border-b'>{item.dm_per_day}</td>
+                            <td className='px-2 py-2 bg-white text-black border-b'>{item.weight}</td>
+                            <td className='px-2 py-2 bg-white text-black border-b'>{item.animal_type }</td>
+                            <td className='px-2 py-2 bg-white text-black border-b'>{item.adg}</td>
+                            <td className='px-2 py-2 bg-white text-black border-b'>{item.cp }</td>
+                            <td className='px-2 py-2 bg-white text-black border-b'>{item.tdn}</td>
+                            <td className='px-2 py-2 bg-white text-black border-b'>{item.dm_per_day}</td>
                         </tr>                                    
                     )
                 })}                       
