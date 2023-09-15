@@ -97,25 +97,23 @@ export default function FeedCalculator() {
         {/* <!-- error hundling for form input --> */}  
         <ErrorDisplay componentID="errorDisplayId" />     
 
-         
-        <div className=" grid grid-cols-1 md:grid-cols-2 max-w-screen-xl mx-auto ps-9">
-            {/* <!-- drop down with available feeds for the current user --> */}
-            <DefaultFeedsDropdown componentId="feed_select" />
-        </div>
 
-
-        <div className="container max-w-screen-xl mx-auto flex justify-around">   
-
-         
-            {/* <!-- left side --> */}
-            <div className=" w-7/12 mt-8 me-5">               
-                
+        <div className="container max-w-screen-xl grid md:grid-cols-5 row-span-1 mx-auto">
+            <div className="w-full md:col-span-3 mt-8 pe-5">
                 {/* <!-- drop down with available feeds for the current user --> */}
                 <DefaultFeedsDropdown componentId="feed_select" />
-                
+            </div>
+            
+            {/* <!-- right side --> */}
+            <div className="w-full md:col-span-2 md:row-span-2 pe-5 mt-8">
+                {/* <!-- feeds selected by user for calculations --> */}                          
+                <SelectedFeedsTable componentId="selectedTableFeeds" />
+            </div>
+          
 
-                <form onSubmit={(e) => calculateRation(e)}>
-                    {/* <!-- calculator input form --> */}
+            <div className="w-full md:col-span-3 row-span-1 pe-5">
+                 {/* <!-- calculator input form --> */}
+                <form onSubmit={(e) => calculateRation(e)}>                    
                     <div className="grid grid-cols-4 mt-8 shadow-md shadow-gray-300">                   
                         <div className="col-span-1">
                             <label htmlFor="weight_start_select">Weight Start</label>
@@ -137,8 +135,8 @@ export default function FeedCalculator() {
                     </div>
 
                     <div className="grid grid-cols-4 mt-4">                              
-                        <div className="col-span-1 col-start-4 flex justify-end">
-                            <button className="col-span-1 w-full h-9 bg-neutral-700 text-white text-lg rounded shadow-md shadow-gray-300 " 
+                        <div className="col-span-2 col-start-2 md:col-span-1 md:col-start-4 flex justify-end md:justify-center">
+                            <button className="w-full h-9 bg-neutral-700 text-white text-lg rounded shadow-md shadow-gray-300 " 
                                     type="submit" id="btn_calculate">
                                 <i className="bi bi-calculator me-2"></i> 
                                 Calculate 
@@ -147,29 +145,20 @@ export default function FeedCalculator() {
                     </div>
                 </form>
             </div>
-            {/* <!-- end of left side --> */}
-
-
-             {/* <!-- table to display information --> */}       
-            {/* <!-- right side --> */}
-            <div className=" w-5/12 ms-5 mt-8">
-                {/* <!-- feeds selected by user for calculations --> */}                          
-                <SelectedFeedsTable componentId="selectedTableFeeds" />
-            </div>
-            {/* <!-- end of right side --> */}
         </div>
 
 
+        {/* <!-- tables with calculations --> */}
         {/* <!------------------- calculation results per weight --------------------> */}
-        <div className="container max-w-screen-xl mx-auto flex justify-start">
+        <div className="container max-w-screen-xl grid grid-cols-1 md:grid-cols-12 mt-10 mx-auto">
             {/* <!-- left side result display of calculations by weight and range --> */}
-            <div className=" w-7/12 mt-8 ms-0">
+            <div className="col-span-1 md:col-span-7 mt-8">
                 <CalculatorResultsForWeight rationResult={rationResult} />               
             </div>
 
 
             {/* <!-- right side for a bulk feed based on amount of animals on the farm --> */}
-            <div className={rationBulkResult?.averageWeight ?? 0 > 0 ? 'w-5/12 mt-6 py-2 ms-5 bg-white shadow-md' : 'hidden' } >
+            <div className={rationBulkResult?.averageWeight ?? 0 > 0 ? 'col-span-1 md:col-span-5 mt-8 md:mt-6 md:ms-5 bg-white shadow-md' : 'hidden' } >
                 <CalculatorResultsForBulk 
                     rationBulkResult={rationBulkResult} 
                     animalCount={calculatorInputData.current.heads} 
