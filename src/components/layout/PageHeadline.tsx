@@ -1,4 +1,4 @@
-
+import { memo } from 'react';
 
 interface PageHeadlineProps {
     headline: string;
@@ -17,4 +17,4 @@ const PageHeadline= ({headline}: PageHeadlineProps) => {
     )
 }
 
-export default PageHeadline;
+export default memo(PageHeadline);

@@ -92,21 +92,13 @@ export default function FeedCalculator() {
     <>                     
         {/* <!-- page headline --> */}
         <PageHeadline headline="Calculator" />       
-           
+     
 
         {/* <!-- error hundling for form input --> */}  
-        <ErrorDisplay componentID="errorDisplayId" />     
-
+        <ErrorDisplay componentID="errorDisplayId" />                  
          
-        <div className=" grid grid-cols-1 md:grid-cols-2 max-w-screen-xl mx-auto ps-9">
-            {/* <!-- drop down with available feeds for the current user --> */}
-            <DefaultFeedsDropdown componentId="feed_select" />
-        </div>
 
-
-        <div className="container max-w-screen-xl mx-auto flex justify-around">   
-
-         
+        <div className="container max-w-screen-xl mx-auto flex justify-around">                      
             {/* <!-- left side --> */}
             <div className=" w-7/12 mt-8 me-5">               
                 

@@ -1,12 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { memo } from 'react';
 
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import '../../app/globals.css';
 
 
-export default function Navbar() {
+const Navbar = () => {
 
     //toggles menu button from open to close and other way around
     const toggleMenu = (action: string) => {
@@ -69,7 +70,7 @@ export default function Navbar() {
                 </div>
             </nav>    
 
-            {/* <!-- visible only on small screens --> */}
+            {/* <!-- visible only on small screens and when button is clicked --> */}
             <ul className='bg-neutral-600 text-gray-400 py-2 flex-row justify-items-center w-full hidden md:hidden shadow-sm' id="smallMenu">
                 <li>
                     <div className='w-full flex justify-start ms-10'>
@@ -103,8 +104,9 @@ export default function Navbar() {
                         </Link>   
                     </div>           
                 </li>
-            </ul>
-       
+            </ul>       
         </>
     );
 }
+
+export default memo(Navbar);
