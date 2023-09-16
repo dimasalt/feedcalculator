@@ -114,7 +114,7 @@ export default function FeedCalculator() {
             <div className="w-full md:col-span-3 row-span-1 pe-5">
                  {/* <!-- calculator input form --> */}
                 <form onSubmit={(e) => calculateRation(e)}>                    
-                    <div className="grid grid-cols-4 mt-8 shadow-md shadow-gray-300">                   
+                    <div className="grid grid-cols-2 md:grid-cols-4 mt-8 shadow-md shadow-gray-300">                   
                         <div className="col-span-1">
                             <label htmlFor="weight_start_select">Weight Start</label>
                             <StartWeightDropDown selectedStartWeightValue={calculatorInputData.current.startWeight} onWeightChange={onWeightChange} />                            
@@ -123,19 +123,19 @@ export default function FeedCalculator() {
                             <label htmlFor="weight_end_select">Weight End</label>
                             <EndWeightDropDown selectedEndWeightValue={calculatorInputData.current.endWeight} onWeightChange={onWeightChange} />                        
                         </div>                  
-                        <div className="col-span-1">
+                        <div className="col-span-1 mt-5 md:mt-0">
                             <label htmlFor="adg_select">ADG (lb)</label>                                  
                             <AdgDropdown selectedAdgValue={calculatorInputData.current.selectedAdg} onAdgChange={onAdgChange} />                      
                         </div>
                         
-                        <div className="col-span-1">
+                        <div className="col-span-1 mt-5 md:mt-0">
                             <label htmlFor="text_heads"># of Heads</label>
                             <input type="text" onChange={(e) => onHeadsChange(e.target.value)} className="rounded-none w-full border border-gray-400 h-8 ps-3" id="text_heads" />
                         </div>                           
                     </div>
 
                     <div className="grid grid-cols-4 mt-4">                              
-                        <div className="col-span-2 col-start-2 md:col-span-1 md:col-start-4 flex justify-end md:justify-center">
+                        <div className="col-span-2 col-start-2 md:col-span-1 md:col-start-4 flex md:justify-end">
                             <button className="w-full h-9 bg-neutral-700 text-white text-lg rounded shadow-md shadow-gray-300 " 
                                     type="submit" id="btn_calculate">
                                 <i className="bi bi-calculator me-2"></i> 

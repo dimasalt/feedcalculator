@@ -39,7 +39,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode})
 
           {/* <!-- Header scripts --> */}
         </head>
-        <body>
+        <body className=' bg-slate-200'>
 			
         {/* <!-- cookie component to initiate cookies every time on every page --> */}
         <CookiesComponent />
