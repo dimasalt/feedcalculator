@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  feed_calculator:    
+    container_name: nextjs_app
+    environment:
+      NODE_ENV: production
+    build: 
+      context: .
+      dockerfile: ./Dockerfile         
+    ports:
+      - 3001:3001 
+    depends_on: 
+      - app_db
+      - app_server
+    restart: unless-stopped
+    networks:
+      - calculatornetwork
+
+  app_db:
+    container_name: mariadb   
+    image: mariadb:11.2.2-jammy   
+    environment:   
+      - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes
+    ports:
+      - 3307:3306
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./backup:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+    networks: 
+      - calculatornetwork
+
+  app_server:
+    container_name: apache2
+    image: httpd:alpine3.19
+    ports: 
+      - 8080:8080
+    restart: unless-stopped
+    networks:
+      - calculatornetwork
+
+volumes:
+  mysql_data:
+  backup:
+
+networks:
+  calculatornetwork:
+
