@@ -22,11 +22,15 @@ services:
     image: mariadb:11.2.2-jammy   
     environment:   
       - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes
+      - MYSQL_DATABASE=feedcalculator
+      # - MYSQL_USER=user_name
+      # - MYSQL_PASSWORD=root123
+      # - MYSQL_ROOT_PASSWORD=root123
     ports:
       - 3307:3306
     volumes:
       - ./mysql_data:/var/lib/mysql
-      - ./backup:/docker-entrypoint-initdb.d
+      - ./backup/backup.sql:/docker-entrypoint-initdb.d/backup.sql
     restart: unless-stopped
     networks: 
       - calculatornetwork
@@ -34,8 +38,10 @@ services:
   app_server:
     container_name: apache2
     image: httpd:alpine3.19
+    # volumes:
+    #   - ${PWD}/website:/usr/local/apache2/htdocs
     ports: 
-      - 8080:8080
+      - 8080:80
     restart: unless-stopped
     networks:
       - calculatornetwork
@@ -46,4 +52,5 @@ volumes:
 
 networks:
   calculatornetwork:
+    driver: bridge
 
