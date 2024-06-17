@@ -1,56 +1,53 @@
-version: '3.8'
-
 services:
   feed_calculator:    
-    container_name: nextjs_app
+    container_name: feedcalculator_app
     environment:
       NODE_ENV: production
     build: 
       context: .
       dockerfile: ./Dockerfile         
     ports:
-      - 3001:3001 
-    depends_on: 
-      - app_db
-      - app_server
+      - 3001:3001    
     restart: unless-stopped
     networks:
-      - calculatornetwork
+      - webapp
 
-  app_db:
-    container_name: mariadb   
-    image: mariadb:11.2.2-jammy   
-    environment:   
-      - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes
-      - MYSQL_DATABASE=feedcalculator
-      # - MYSQL_USER=user_name
-      # - MYSQL_PASSWORD=root123
-      # - MYSQL_ROOT_PASSWORD=root123
-    ports:
-      - 3307:3306
-    volumes:
-      - ./mysql_data:/var/lib/mysql
-      - ./backup/backup.sql:/docker-entrypoint-initdb.d/backup.sql
-    restart: unless-stopped
-    networks: 
-      - calculatornetwork
 
-  app_server:
-    container_name: apache2
-    image: httpd:alpine3.19
-    # volumes:
-    #   - ${PWD}/website:/usr/local/apache2/htdocs
-    ports: 
-      - 8080:80
-    restart: unless-stopped
-    networks:
-      - calculatornetwork
 
-volumes:
-  mysql_data:
-  backup:
+  # app_db:
+  #   container_name: mariadb   
+  #   image: mariadb:11.4.2-noble
+  #   environment:   
+  #     - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=no
+  #     - MYSQL_DATABASE=feedcalculator
+  #     - MYSQL_USER=appuser
+  #     - MYSQL_PASSWORD=root123
+  #     - MYSQL_ROOT_PASSWORD=root123
+  #   ports:
+  #     - 3307:3306
+  #   volumes:
+  #     - ./mysql_data:/var/lib/mysql
+  #     - ./backup/backup.sql:/docker-entrypoint-initdb.d/backup.sql
+  #   restart: always
+  #   networks: 
+  #     - appsnetwork
+
+#   app_server:
+#     container_name: apache2
+#     image: httpd:alpine3.19
+#     volumes:
+#       - ${PWD}/website:/usr/local/apache2/htdocs
+#     ports: 
+#       - 8080:80
+#     restart: always
+#     networks:
+#       - appsnetwork
+
+# volumes:
+#   mysql_data:
+#   backup:
 
 networks:
-  calculatornetwork:
+  webapp:
     driver: bridge
 
