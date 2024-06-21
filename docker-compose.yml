@@ -8,6 +8,8 @@ services:
       dockerfile: ./Dockerfile         
     ports:
       - 3001:3001    
+    env_file:
+      - .env
     restart: unless-stopped
     networks:
       - webapp
@@ -50,4 +52,5 @@ services:
 networks:
   webapp:
     driver: bridge
+    external: true
 
