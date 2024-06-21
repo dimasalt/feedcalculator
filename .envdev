@@ -1,0 +1,16 @@
+
+##############################################################################
+###         Rename this file for production to just .env                   ###
+###                     and change the parameters                          ###
+##############################################################################
+
+#Setting for MySQL for a localhost
+DB_HOST=localhost
+DB_NAME=feedcalculator
+DB_USER=root
+DB_PASS=
+
+
+
+# command to get the key require('crypto').randomBytes(48).toString('hex');
+DATA_API_KEY=7fe78151ea606b8daf19399fc7cbedd1063e0163d993f6446c961844040ea161f24531f929cd82ca788c4fe67fdbf9b5
