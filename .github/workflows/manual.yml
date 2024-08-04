@@ -15,5 +15,5 @@ jobs:
     steps:
       - uses: action/checkout@main
       - name: Create .env
-      - run: echo 'PORT=${{PORT}} > .env
+        run: echo 'PORT=${{PORT}} > .env
       #- run: echo
