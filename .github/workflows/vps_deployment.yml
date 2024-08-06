@@ -60,5 +60,5 @@ jobs:
          echo 'DB_USER=${{secrets.DB_USER}}' > .env
          echo 'DB_PASS=${{secrets.DB_PASS}}' > .env
 
-      - name: Run build
+      - name: Run docker
         run: docker compose up -d
