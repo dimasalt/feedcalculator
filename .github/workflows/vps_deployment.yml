@@ -6,6 +6,7 @@ on:
       [main]
 jobs:
   lint:
+    #sshd lsb_release -a
     #runs-on: ubuntu-latest
     runs-on: ubuntu-22.04
     
@@ -37,25 +38,27 @@ jobs:
       - name: build Next.js project
         run: npm run build
 
-  # deploy:
-  #   needs: [lint, build]
-  #   runs-on: self-hosted
+  deploy:
+    needs: [build]
+    runs-on: self-hosted
 
-  #  env:
-  #   MY_SECRET1: ${{ secrets.MY_SECRET1 }}
-  #   MY_SECRET2: ${{ secrets.MY_SECRET2 }}
-  #   MY_SECRET3: ${{ secrets.MY_SECRET3 }}
-  #   MY_SECRET4: ${{ secrets.MY_SECRET4 }}
-  #   MY_SECRET5: ${{ secrets.MY_SECRET5 }}
-  #   MY_SECRET6: ${{ secrets.MY_SECRET6 }}
+    # env:
+    #   DB_HOST: ${{ secrets.DB_HOST }}
+    #   DB_NAME: ${{ secrets.DB_NAME }}
+    #   DB_USER: ${{ secrets.DB_USER }}
+    #   DB_PASS: ${{ secrets.DB_PASS }}
 
-  #   name: Deploys application to VPS
-  #   steps:
-  #     - name: Checkout our main branch
-  #       uses: action/checkout@v4
+    name: Deploys application to VPS
+    steps:
+      - name: Checkout our main branch
+        uses: action/checkout@v4
+      
+      - name: Create .env file
+        run: |
+         echo 'DB_HOST=${{secrets.DB_HOST}}' > .env
+         echo 'DB_NAME=${{secrets.DB_NAME}}' > .env
+         echo 'DB_USER=${{secrets.DB_USER}}' > .env
+         echo 'DB_PASS=${{secrets.DB_PASS}}' > .env
 
-  #     - name: Create .env file
-  #       run: echo 'PORT=${{secrets.PORT}}' > .env
-
-  #     - name: Run build
-  #       run: docker compose up -d
+      - name: Run build
+        run: docker compose up -d
