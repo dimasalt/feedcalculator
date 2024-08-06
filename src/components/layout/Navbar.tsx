@@ -34,7 +34,7 @@ const Navbar = () => {
                 {/* <!-- logo and app name --> */}
                 <div className=' w-full md:w-fit'>
                     <Link className=" text-gray-300 font-semibold text-2xl md:text-3xl" href="/">
-                        <span className=' text-green-600 ms-3'>Feed</span> Calculator2
+                        <span className=' text-green-600 ms-3'>Feed</span> Calculator
                     </Link>                          
                 </div>                    
 
@@ -42,7 +42,7 @@ const Navbar = () => {
                 <div className=" text-gray-400 me-10 justify-center mt-2 text-lg hidden md:flex">                       
                     <Link className="hover:text-gray-100 me-8" id='test' href="/">
                         <i className="bi bi-calculator me-1"></i>
-                        Calculator
+                        Calculator222
                     </Link>
                     <Link className="hover:text-gray-100 me-8" href="/feeds">
                         <i className="bi bi-flower2 me-1"></i>
