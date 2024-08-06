@@ -34,7 +34,7 @@ const Navbar = () => {
                 {/* <!-- logo and app name --> */}
                 <div className=' w-full md:w-fit'>
                     <Link className=" text-gray-300 font-semibold text-2xl md:text-3xl" href="/">
-                        <span className=' text-green-600 ms-3'>Feed</span> Calculator
+                        <span className=' text-green-600 ms-3'>Feed</span> Calculator2
                     </Link>                          
                 </div>                    
 
