@@ -21,10 +21,10 @@ services:
   #   image: mariadb:11.4.2-noble
   #   environment:   
   #     - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=no
-  #     - MYSQL_DATABASE=feedcalculator
-  #     - MYSQL_USER=appuser
-  #     - MYSQL_PASSWORD=root123
-  #     - MYSQL_ROOT_PASSWORD=root123
+  #     - MARIADB_DATABASE=feedcalculator
+  #     - MARIADB_USER=appuser
+  #     - MARIADB_PASSWORD=root123
+  #     - MARIADB_ROOT_PASSWORD=root123
   #   ports:
   #     - 3307:3306
   #   volumes:

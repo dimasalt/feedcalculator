@@ -6,7 +6,8 @@ on:
       [main]
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     
     name: Performing lint
     steps:
@@ -19,12 +20,12 @@ jobs:
 
   build: 
     needs: [lint]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         node: [ 20, 22 ]
 
-    name: Install node and try build it on LTS and Latest versions
+    name: Build on Node 20 LTS and Latest Node 22
     steps:     
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -35,4 +36,26 @@ jobs:
         run: npm ci 
       - name: build Next.js project
         run: npm run build
-      
+
+  # deploy:
+  #   needs: [lint, build]
+  #   runs-on: self-hosted
+
+  #  env:
+  #   MY_SECRET1: ${{ secrets.MY_SECRET1 }}
+  #   MY_SECRET2: ${{ secrets.MY_SECRET2 }}
+  #   MY_SECRET3: ${{ secrets.MY_SECRET3 }}
+  #   MY_SECRET4: ${{ secrets.MY_SECRET4 }}
+  #   MY_SECRET5: ${{ secrets.MY_SECRET5 }}
+  #   MY_SECRET6: ${{ secrets.MY_SECRET6 }}
+
+  #   name: Deploys application to VPS
+  #   steps:
+  #     - name: Checkout our main branch
+  #       uses: action/checkout@v4
+
+  #     - name: Create .env file
+  #       run: echo 'PORT=${{secrets.PORT}}' > .env
+
+  #     - name: Run build
+  #       run: docker compose up -d
