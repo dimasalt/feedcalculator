@@ -5,7 +5,19 @@ on:
     branches:
       [main]
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    
+    name: Performing lint
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install npm
+        run: npm ci
+      - name: run lint
+        run: npm run lint
   build: 
+    need: [lint]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -22,18 +34,4 @@ jobs:
         run: npm ci 
       - name: build Next.js project
         run: npm run build
-
-  # deploy:
-  #   needs: [build]
-  #   runs-on: self-hosted
-
-  #   name: Deploys application to VPS
-  #   steps:
-  #     - name: Checkout our main branch
-  #       uses: action/checkout@v4
-
-  #     - name: Create .env file
-  #       run: echo 'PORT=${{secrets.PORT}}' > .env
-
-  #     - name: Run build
-  #       run: docker compose up -d
+      
