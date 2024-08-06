@@ -16,8 +16,9 @@ jobs:
         run: npm ci
       - name: run lint
         run: npm run lint
+
   build: 
-    need: [lint]
+    needs: [lint]
     runs-on: ubuntu-latest
     strategy:
       matrix:
