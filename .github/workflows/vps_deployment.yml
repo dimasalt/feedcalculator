@@ -51,7 +51,7 @@ jobs:
     name: Deploys application to VPS
     steps:
       - name: Checkout our main branch
-        uses: action/checkout@v4
+        uses: action/checkout@main
       
       - name: Create .env file
         run: |
