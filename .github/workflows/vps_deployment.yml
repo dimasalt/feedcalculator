@@ -42,24 +42,23 @@ jobs:
     needs: [build]
     runs-on: self-hosted
 
-    env:
-      DB_HOST: ${{ secrets.DB_HOST }}
-      DB_NAME: ${{ secrets.DB_NAME }}
-      DB_USER: ${{ secrets.DB_USER }}
-      DB_PASS: ${{ secrets.DB_PASS }}
+    # env:
+    #   DB_HOST: ${{ secrets.DB_HOST }}
+    #   DB_NAME: ${{ secrets.DB_NAME }}
+    #   DB_USER: ${{ secrets.DB_USER }}
+    #   DB_PASS: ${{ secrets.DB_PASS }}
 
     name: Deploys application to VPS
     steps:
       - name: Checkout our main branch
         uses: actions/checkout@v4
       
-      # - name: Create .env file
-      #   run: |
-      #    echo 'DB_HOST=${{secrets.DB_HOST}}' 
-      #    echo 'DB_NAME=${{secrets.DB_NAME}}' 
-      #    echo 'DB_USER=${{secrets.DB_USER}}' 
-      #    echo 'DB_PASS=${{secrets.DB_PASS}}' > .env
+      - name: Create .env file
+        run: |
+         echo 'DB_HOST=${{secrets.DB_HOST}}' 
+         echo 'DB_NAME=${{secrets.DB_NAME}}' 
+         echo 'DB_USER=${{secrets.DB_USER}}' 
+         echo 'DB_PASS=${{secrets.DB_PASS}}' > .env
 
       - name: Run docker
         run: docker compose up -d
-        
