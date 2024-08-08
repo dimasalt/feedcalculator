@@ -42,7 +42,7 @@ const Navbar = () => {
                 <div className=" text-gray-400 me-10 justify-center mt-2 text-lg hidden md:flex">                       
                     <Link className="hover:text-gray-100 me-8" id='test' href="/">
                         <i className="bi bi-calculator me-1"></i>
-                        Calculator 222
+                        Calculator
                     </Link>
                     <Link className="hover:text-gray-100 me-8" href="/feeds">
                         <i className="bi bi-flower2 me-1"></i>
