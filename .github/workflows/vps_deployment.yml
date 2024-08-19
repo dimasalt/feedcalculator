@@ -62,3 +62,7 @@ jobs:
 
       - name: Run docker
         run: docker compose up --build --force-recreate -d
+
+      # -f option to clear cache without any promts
+      - name: Clear all docker cache to keep VPS disk clean
+        run: docker builder prune -f
