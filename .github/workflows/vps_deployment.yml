@@ -66,3 +66,6 @@ jobs:
       # -f option to clear cache without any promts
       - name: Clear all docker cache to keep VPS disk clean
         run: docker builder prune -f
+      
+      #- name: Clear all unused resources by docker
+      #  run: docker system prune -a -f
