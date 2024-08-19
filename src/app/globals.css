@@ -6,9 +6,31 @@
 
 
 @layer components {
-  /* input[type=text] 
-  { 
-      @apply h-9 px-5 border border-gray-400 shadow-md shadow-gray-300; 
+  /* .btn {
+    @apply px-6 h-10 font-semibold text-lg;
+  }
+
+  .btn-submit {
+    @apply text-gray-100 bg-cyan-900 hover:bg-cyan-700;
+  }
+
+  .btn-cancel {
+    @apply bg-red-700 hover:bg-red-600 text-gray-200; 
+  }
+
+
+  select
+  {
+    @apply h-10 border px-4 w-full bg-gray-50 text-gray-800;
+  }
+
+  input[type="text"]
+  {
+    @apply h-10 border px-4 w-full bg-gray-50 text-gray-800 appearance-none outline-none;
+  }
+
+  textarea {
+    @apply border px-2 w-full bg-gray-50 text-gray-800 appearance-none outline-none;
   } */
 }
 
