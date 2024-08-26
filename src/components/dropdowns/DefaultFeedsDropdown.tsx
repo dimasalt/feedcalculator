@@ -91,18 +91,17 @@ const DefaultFeedsDropdown = ({componentId} : DefaultFeedsDropdownProps) => {
             dispatch(addMessage('Feed selection cannot be empty'));       
         }        
     }
-    return(
-        <>
+    return(        
+        <>    
             <form onSubmit={(e) => hundleSelectedFeedSumbit(e)} >     
                 <div className="grid grid-cols-1 md:grid-cols-7">
                  {/* <div className="w-full">                    */}
                     <div className="col-span-1 md:col-span-7">
-                        <h2 className="text-lg font-normal w-full">Feed and Starting inputs (<Link className="text-green-700" href="/ration" prefetch={false}>feed requirements table</Link>)</h2>                                
+                        <h2 className="text-lg font-normal w-full">Feed and Starting inputs (<Link href="/ration" className="text-link" prefetch={false}>feed requirements table</Link>)</h2>                                
                     </div>
                     <div className=" col-span-1 md:col-span-5">                                     
-                        <select                       
-                            className="h-8 px-5 border border-gray-400 shadow-md shadow-gray-300 w-full"
-                            aria-label="Select adg"               
+                        <select                           
+                            aria-label="Select default feed"               
                             onChange={(e) => onFeedChange(e.target.value)} id={componentId}>
                             
                             <option value='0' key='0' label=""></option>
@@ -113,9 +112,8 @@ const DefaultFeedsDropdown = ({componentId} : DefaultFeedsDropdownProps) => {
                             })}
                         </select>
                     </div>
-                    <div className="col-span-1 md:col-span-2">
-                        <button type="submit" className="h-8 md:px-1 w-full bg-green-800 text-white font-semibold shadow-md shadow-gray-300  
-                                hover:bg-green-900 hover:scale-105 hover:ease-in hover:duration-200" id="btn_feedSubmit">
+                    <div className="col-span-1 md:col-span-2">                   
+                        <button type="submit" className="btn btn-submit hover:scale-105 hover:ease-in hover:duration-200" id="btn_feedSubmit">
                             <i className="bi bi-check2-circle me-2"></i> 
                             Add Selected 
                         </button>                   

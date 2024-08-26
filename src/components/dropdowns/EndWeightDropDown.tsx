@@ -19,8 +19,7 @@ const EndWeightDropDown:FC<EndWeightProps> = ({selectedEndWeightValue, onWeightC
 
     return(
         <select
-            defaultValue={selectedEndWeightValue} 
-            className="h-8 px-5 border border-gray-400 shadow-md shadow-gray-300 w-full"
+            defaultValue={selectedEndWeightValue}             
             aria-label="Select end weight"                       
             onChange={(e) => onWeightChange(e.target.value, 2)} id="weight_end_select">
             

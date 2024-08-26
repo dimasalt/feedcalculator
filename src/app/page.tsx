@@ -136,7 +136,7 @@ export default function FeedCalculator() {
 
                     <div className="grid grid-cols-4 mt-4">                              
                         <div className="col-span-2 col-start-2 md:col-span-1 md:col-start-4 flex md:justify-end">
-                            <button className="w-full h-9 bg-neutral-700 text-white text-lg rounded shadow-md shadow-gray-300 " 
+                            <button className="btn btn-submit bg-dark-50" 
                                     type="submit" id="btn_calculate">
                                 <i className="bi bi-calculator me-2"></i> 
                                 Calculate 

@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install npm
-        run: npm ci
+        run: npm ci        
       - name: run lint
         run: npm run lint
 

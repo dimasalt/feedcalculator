@@ -20,8 +20,7 @@ const StartWeightDropDown = ({selectedStartWeightValue, onWeightChange}:StartWei
 
     return(
         <select
-            defaultValue={selectedStartWeightValue} 
-            className="h-8 px-5 border border-gray-400 shadow-md shadow-gray-300 w-full"
+            defaultValue={selectedStartWeightValue}         
             aria-label="Select start weight"                       
             onChange={(e) => onWeightChange(e.target.value, 1)} id="weight_start_select">
             

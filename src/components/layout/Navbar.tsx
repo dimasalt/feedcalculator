@@ -30,7 +30,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="flex justify-around shadow-md bg-dark-50 py-4 w-full">
+            <nav className="flex justify-around shadow-md py-4 w-full">
                 {/* <!-- logo and app name --> */}
                 <div className=' w-full md:w-fit'>
                     <Link className=" text-gray-300 font-semibold text-2xl md:text-3xl" href="/">

@@ -6,48 +6,43 @@
 
 
 @layer components {
-  /* .btn {
-    @apply px-6 h-10 font-semibold text-lg;
+
+  /* inputs */
+  input[type="text"]{
+      @apply h-10 border px-4 w-full bg-gray-50 text-gray-800 appearance-none outline-none border-gray-400;
+  }
+
+
+  select {
+      @apply h-10 border px-4 w-full bg-white text-gray-800 outline-none border-gray-400; 
+  }
+
+  /* green submit button */
+  .btn {
+    @apply px-6 h-10 font-semibold text-lg w-full;
   }
 
   .btn-submit {
-    @apply text-gray-100 bg-cyan-900 hover:bg-cyan-700;
+    @apply text-gray-100 bg-teal-600 hover:bg-teal-800;
+    /* background-color: #2A9D8F; */
   }
 
   .btn-cancel {
     @apply bg-red-700 hover:bg-red-600 text-gray-200; 
   }
 
-
-  select
-  {
-    @apply h-10 border px-4 w-full bg-gray-50 text-gray-800;
-  }
-
-  input[type="text"]
-  {
-    @apply h-10 border px-4 w-full bg-gray-50 text-gray-800 appearance-none outline-none;
-  }
-
   textarea {
     @apply border px-2 w-full bg-gray-50 text-gray-800 appearance-none outline-none;
-  } */
-}
-
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
   }
-} */
 
+  table > thead > tr > th {
+    @apply ps-2 h-10 text-lg bg-dark-50 text-gray-300 w-60 border-r font-normal not-italic;
+  }
+
+  table > tbody > tr > td {
+    @apply bg-white ps-3 h-10;
+  }
+}
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -59,31 +54,22 @@ body {
     background-color: #f2f7f8;
 } 
 
-
-/******** background colors ****************/
 .bg-dark-50, nav {
-    background-color: #303030 !important;
+    background-color: #264653 !important;
+    color: #f2f7f8;
 }
+
+
 
 .bg-secondary-light {
     color : #41464b;
     background-color: #e2e3e5;    
 }
 
-.navbar-expand-lg .navbar-nav .nav-link:hover{
-    color : #777c82;   
-}
-
-.navbar-expand-lg .navbar-nav .nav-link:hover {
-    color : #777c82 !important;   
-}
-
-tbody, th, thead {
-    background-color: #323232 !important;
-    color : #c9cdd1;   
+/* tbody, th, thead {
     font-style: normal;
     font-weight: normal;
-}
+} */
 
 table tr td {
   font-weight: 300;
@@ -96,4 +82,8 @@ table tr td {
 
 select option {
   font-weight: 300;
+}
+
+a.text-link {
+  color: #2A9D8F;
 }

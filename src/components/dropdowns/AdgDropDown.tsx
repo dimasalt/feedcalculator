@@ -21,8 +21,7 @@ const AdgDropdown:React.FC<AdgDropdownProps> = ({selectedAdgValue, onAdgChange})
 
     return(
         <select          
-            defaultValue={selectedAdgValue}
-            className="h-8 px-5 border border-gray-400 shadow-md shadow-gray-300 w-full"
+            defaultValue={selectedAdgValue}          
             aria-label="Select adg"          
             onChange={(e) => onAdgChange(e.target.value)} id="adg_select">
             
