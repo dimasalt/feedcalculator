@@ -38,7 +38,7 @@ export default function Ration() {
     //calls rationService which makes call to API and gets ration in assigned range from mysql database
     const callRationService = async () => {
         await rationService(selectedAdg.current, selectedStartWeight.current, selectedEndWeight.current)
-        .then((result) => {            
+        .then((result) => {                  
             setRation(result);
         });        
     }

@@ -1,28 +1,38 @@
-import promisePool from "@/utils/mysql";
-import { RowDataPacket } from "mysql2";
 import { NextRequest, NextResponse } from "next/server";
 
-//   interface Adgs extends RowDataPacket{
-//     adg: string,
-//     value: number
-//   }
+import { PrismaClient } from "@prisma/client";
 
-  
-
-  // export interface SearchReqs {
-  //   adg: number
-  //   start_weight: number
-  //   end_weight: number
-  // }
   
 export const POST = async(request: NextRequest)=>  {
     //const body = await request.json();
 
+    const prisma = new PrismaClient();
+
     try {
-        const [rows,fields] = await promisePool.query('call feedGetRequirementsAdg()', []);
-        return new NextResponse(JSON.stringify({data: rows}));   
+        const adgs = await prisma.feed_requirement.findMany({
+            select: {                
+                adg: true
+            },
+            distinct: ['adg']
+        });
+        return new NextResponse(JSON.stringify({data: [adgs]}));   
     }
     catch(error){
-        throw error;
+        return new NextResponse(JSON.stringify({data: []}));   
     }
+    finally
+    {
+        //close prisma client connection
+        await prisma.$disconnect();
+    }
+
+
+    //old sql query
+    // try {
+    //     const [rows,fields] = await promisePool.query('call feedGetRequirementsAdg()', []);
+    //     return new NextResponse(JSON.stringify({data: rows}));   
+    // }
+    // catch(error){
+    //     throw error;
+    // }
 } 
