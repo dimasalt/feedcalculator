@@ -21,7 +21,7 @@ export const CalculatorResultsForWeight = ({rationResult}: CalcResultRationProps
             {rationResult.map((item, index) => {
                 return(
                     <tr key={index}>
-                        <td className="ps-3 py-2 bg-white text-black text-center border-b">{item.weight}</td>
+                        <td className="ps-3 py-2 bg-white text-black text-center border-b font-semibold">{item.weight}</td>
                         <td className="ps-3 py-2 bg-white text-black text-center border-b">{item.adg}</td>
                         <td className="ps-3 py-2 bg-white text-black text-center border-b">{item.proteinLb}</td>
                         <td className="ps-3 py-2 bg-white text-black text-center border-b">{item.grainLb}</td>

@@ -8,7 +8,7 @@ interface CalcRationBulkProps {
 export const CalculatorResultsForBulk = ({rationBulkResult, animalCount}: CalcRationBulkProps) => {
     return (
         <>
-          <div className="w-full border-b-2 border-neutral-100 border-opacity-100 py-2 px-2 dark:border-opacity-50 font-semibold bg-neutral-800 text-white">
+          <div className="w-full mt-2 border-b-2 border-neutral-100 border-opacity-100 py-2 px-2 dark:border-opacity-50 font-semibold bg-dark-50 text-white">
                 For a total of {animalCount} animals with average weight of {rationBulkResult?.averageWeight} lbs
             </div>
             <div className="w-full border-t border-gray-300 py-2 px-3 flex justify-between font-medium">
@@ -46,3 +46,4 @@ export const CalculatorResultsForBulk = ({rationBulkResult, animalCount}: CalcRa
         </>
     )
 }
+

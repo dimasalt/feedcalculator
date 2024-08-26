@@ -8,7 +8,9 @@
 @layer components {
 
   /* inputs */
-  input[type="text"]{
+  input[type="text"], 
+  input[type="number"]
+  {
       @apply h-10 border px-4 w-full bg-gray-50 text-gray-800 appearance-none outline-none border-gray-400;
   }
 

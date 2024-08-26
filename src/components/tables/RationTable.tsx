@@ -17,7 +17,7 @@ const RationTable = ({ration}: RationTableProps) => {
         <table className="table-auto w-full border border-gray-300 shadow-md shadow-gray-300">
             <thead>
                 <tr>
-                    <th scope="col" className="ps-2 py-2 text-lg">Weight</th>
+                    <th scope="col" className="ps-2 py-2 text-lg">Weight /lb</th>
                     <th scope="col" className="ps-2 py-2 text-lg">Animal Type</th>
                     <th scope="col" className="ps-2 py-2 text-lg">Average Daily Gain (ADG)</th>
                     <th scope="col" className="ps-2 py-2 text-lg">CP %</th>
@@ -29,7 +29,7 @@ const RationTable = ({ration}: RationTableProps) => {
                 {ration.map((item:any) => {
                     return(
                         <tr key={item.id}>
-                            <td className='px-2 py-2 bg-white text-black border-b'>{item.weight}</td>
+                            <td className='px-2 py-2 bg-white text-black border-b font-semibold'>{item.weight}</td>
                             <td className='px-2 py-2 bg-white text-black border-b'>{item.animal_type }</td>
                             <td className='px-2 py-2 bg-white text-black border-b'>{item.adg}</td>
                             <td className='px-2 py-2 bg-white text-black border-b'>{item.cp }</td>

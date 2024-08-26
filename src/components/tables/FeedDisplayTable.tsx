@@ -25,7 +25,7 @@ export const FeedDisplayTable = ({feeds, onClickRemoveModal}: FeedDisplayTablePr
                 {feeds?.map((item) => {
                     return(
                         <tr key={item.id}>
-                            <td className='ps-3 py-2 bg-white text-black font-normal'>{item.feed_name}</td>
+                            <td className='ps-3 py-2 bg-white text-black font-semibold'>{item.feed_name}</td>
                             <td className='ps-3 py-2 bg-white text-black'>{item.feed_cp }</td>
                             <td className='ps-9 py-2 bg-white text-black'>{item.feed_tdn}</td>
                             <td className='ps-9 py-2 bg-white text-black'>{item.feed_dm}</td>
