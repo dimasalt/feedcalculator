@@ -2,6 +2,8 @@
 import promisePool from "@/utils/mysql";
 import { NextRequest, NextResponse } from "next/server";
 
+import { PrismaClient } from "@prisma/client";
+
   
 //item remove interface
 export interface FeedItemId {
@@ -14,14 +16,26 @@ export const POST = async(request: NextRequest)=>  {
     const body = await request.json();
     const feedId: FeedItemId = body;
 
-    try {
-        const [rows,fields] = await promisePool.query('call feedDelete(?)', [
-            feedId.id
-        ]);
+    //prisma client
+    const prisma = new PrismaClient();
 
-        return new NextResponse(JSON.stringify({data: rows}));   
+    try {
+        //remove selected feed based on feed id
+        const feed = await prisma.feed.delete({
+            where: {
+                id: feedId.id
+            }
+        });
+
+        return new NextResponse(JSON.stringify({data: true}));   
     }
     catch(error){
-        throw error;
+        console.log(error);
+        return new NextResponse(JSON.stringify({data: false}));   
+    }
+    finally
+    {
+        //close prisma client connection
+        await prisma.$disconnect();
     }
 } 

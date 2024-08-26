@@ -1,6 +1,6 @@
 
-import promisePool from "@/utils/mysql";
 import { NextRequest, NextResponse } from "next/server";
+import { PrismaClient } from "@prisma/client";
 
   
 
@@ -13,17 +13,35 @@ export const POST = async(request: NextRequest)=>  {
     const cookie = request.cookies.get('token');
     const userToken:string = cookie?.value ?? '';
 
-    // const userToken: string = '1';
+    //prisma client
+    const prisma = new PrismaClient();
 
-    
     try {
-        const [rows,fields] = await promisePool.query('call feedGetAll(?)', [
-            userToken
-        ]);
+        //get all feeds
+        const feeds = await prisma.feed.findMany({
+            where: {
+                OR: 
+                [
+                    {
+                        user_token: userToken
+                    },
+                    {
+                        is_default: 1
+                    }
+                ]
+            }
+        });
 
-        return new NextResponse(JSON.stringify({data: rows}));   
+        return new NextResponse(JSON.stringify({data: [feeds]}));
+    } 
+    catch 
+    {
+        //otherwise return nothing
+        return new NextResponse(JSON.stringify({data: []}));
     }
-    catch(error){
-        throw error;
+    finally
+    {
+        //close prisma client connection
+        await prisma.$disconnect();
     }
 } 

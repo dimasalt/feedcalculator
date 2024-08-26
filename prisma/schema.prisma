@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model feed {
+  id           Int            @id @default(autoincrement())
+  feed_name    String         @db.VarChar(150)
+  feed_cp      Int
+  feed_tdn     Int
+  feed_dm      Int            @default(0)
+  feed_type    String         @db.VarChar(25)
+  feed_usage   Int            @default(100)
+  is_default   Int            @default(0) @db.TinyInt
+  user_token   String         @default("0") @db.VarChar(64)
+  feed_date    DateTime       @default(now()) @db.DateTime(0)
+  feed_to_user feed_to_user[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model feed_requirement {
+  id          Int     @id @default(autoincrement())
+  weight      Int     @default(0)
+  animal_type String  @db.VarChar(50)
+  adg         Decimal @db.Decimal(19, 1)
+  dm_per_day  Decimal @db.Decimal(19, 1)
+  cp          Decimal @default(0.0) @db.Decimal(19, 1)
+  tdn         Int
+
+  @@index([adg], map: "adg")
+  @@index([weight], map: "weight")
+}
+
+model feed_to_user {
+  id         Int      @id @default(autoincrement())
+  feed_id    Int
+  user_token String   @default("") @db.VarChar(64)
+  at_date    DateTime @default(now()) @db.DateTime(0)
+  feed       feed     @relation(fields: [feed_id], references: [id], onDelete: Cascade, map: "FK_feed_to_user_feed")
+
+  @@index([feed_id], map: "FK_feed_to_user_feed")
+}

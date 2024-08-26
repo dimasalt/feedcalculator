@@ -109,31 +109,27 @@ export default function Feeds() {
     // <!-- add new feed to the list -->
     const addFeed = async() =>{     
 
-        try {
-            const response = await feedAddService(feedItem);           
+        //get feeds from database
+        const response = await feedAddService(feedItem);           
+                    
+        if(response.data === true) 
+        {   
+            //get list of feeds from database                     
+            getFeeds();
+            
+            //clear feed item
+            clearFeedItem();
 
-            if(response.data.affectedRows > 0) 
-            {   
-                //get list of feeds from database                     
-                getFeeds();
-                
-                //clear feed item
-                clearFeedItem();
-
-                toast({                
-                    description: "Feed item has been successfully added",
-                });
-            }
+            toast({                
+                description: "Feed item has been successfully added",
+            });
         }
-        catch(err){
+        else{
             toast({
                 variant: "destructive",                
                 description: "Sorry, something went wrong! We couldn't add a new feed item",
             });
-
-            throw new Error('Failed to save data');
-        }
-               
+        }                       
     }
 
 
@@ -173,44 +169,39 @@ export default function Feeds() {
 
     // <!-- call to remove feed service and remove selected feed item -->
     const removeFeed = async() => {          
-        try{
-            const response = await feedRemoveService(feedItem.id);
-            if(response.data.affectedRows > 0) {
-                await getFeeds();               
-
-                toast({
-                    //variant: "destructive",
-                    //title: "Feed Item Removal",
-                    description: "Feed item has been successfully removed",
-                });
-
-
-                /**
-                 * Have to invalidate cache of selected user feeds in redux toolkit
-                 * When feed is removed from the feed table, it's also removed from the 
-                 * user selected table, but redux toolkit doesn't know about it and needs
-                 * to be told to refetch the query instead of using an old cached one.
-                 */
-                dispatch(selectedFeedsApi.util.invalidateTags(['SelectedFeeds']));              
-            }              
-        }
-        catch(err){
+      
+        const response = await feedRemoveService(feedItem.id);
+        if(response.data === true) {
+            await getFeeds();               
 
             toast({
+                //variant: "destructive",
                 //title: "Feed Item Removal",
-                variant: "destructive",             
+                description: "Feed item has been successfully removed",
+            });
+
+
+            /**
+             * Have to invalidate cache of selected user feeds in redux toolkit
+             * When feed is removed from the feed table, it's also removed from the 
+             * user selected table, but redux toolkit doesn't know about it and needs
+             * to be told to refetch the query instead of using an old cached one.
+             */
+            dispatch(selectedFeedsApi.util.invalidateTags(['SelectedFeeds']));              
+        }              
+        else{
+            toast({
+                //title: "Feed Item Removal",
+                variant: "destructive",                
                 description: "Oops..., Something went wrong, feed item couldn't be removed",
             });
-             // This will activate the closest `error.js` Error Boundary
-            throw new Error('Failed to save data');
-        }
-        finally{
-            //reset feed item id
-            feedItem.id = 0;       
+        }         
+        
+        //reset feed item id
+        feedItem.id = 0;       
             
-            //hide modal            
-            document.querySelector('#removeModal')?.classList?.add('hidden');           
-        }           
+        //hide modal            
+        document.querySelector('#removeModal')?.classList?.add('hidden');                  
     }
 
     // <!-- clears and resets FeedItem -->
@@ -245,10 +236,12 @@ export default function Feeds() {
         />
       
 
-        <div className="container max-w-screen-xl mx-auto pt-14">
+        <div className="container max-w-screen-xl mx-auto pt-14" >
             <div className="flex justify-center">            
                 {/* <!-- feeds display table --> */}
-                <FeedDisplayTable feeds={feeds} onClickRemoveModal={onClickRemoveModal} />
+                {feeds.length > 0 && (
+                    <FeedDisplayTable feeds={feeds} onClickRemoveModal={onClickRemoveModal} />
+                )}
             </div>
         </div>
 

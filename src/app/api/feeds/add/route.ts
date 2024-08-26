@@ -1,9 +1,8 @@
 
-import promisePool from "@/utils/mysql";
-
 import { NextRequest, NextResponse } from "next/server";
 import { Feed } from '../../../../types/Feed';
 
+import { PrismaClient } from "@prisma/client";
   
 /** Adding new feed to the list */
 export const POST = async(request: NextRequest) =>  {
@@ -15,20 +14,33 @@ export const POST = async(request: NextRequest) =>  {
     const cookie = request.cookies.get('token');
     const userToken:string = cookie?.value ?? '';
 
-    try {
-        const [rows,fields] = await promisePool.query('call feedCreate(?,?,?,?,?,?,?,?)', [
-            feedItem.feed_name,
-            feedItem.feed_cp,
-            feedItem.feed_tdn,
-            feedItem.feed_dm,
-            feedItem.feed_type,
-            feedItem.feed_usage,
-            feedItem.is_default,
-            userToken
-        ]);
-        return new NextResponse(JSON.stringify({data: rows}));   
+    //prisma client
+    const prisma = new PrismaClient();
+
+    try 
+    {
+        const feed = await prisma.feed.create({
+            data: {
+                feed_name: feedItem.feed_name,
+                feed_cp: parseInt(feedItem.feed_cp.toString()),
+                feed_tdn: parseInt(feedItem.feed_tdn.toString()),
+                feed_dm: parseInt(feedItem.feed_dm.toString()),
+                feed_type: feedItem.feed_type,
+                feed_usage: parseInt(feedItem.feed_usage.toString()),
+                is_default: feedItem.is_default,
+                user_token: userToken
+            }
+        });     
+
+        return new NextResponse(JSON.stringify({data: true}));
+        
+    } catch (error) {
+        console.log(error);
+        return new NextResponse(JSON.stringify({data: false}));   
     }
-    catch(error){
-        throw error;
-    }
+    finally
+    {
+        //close prisma client connection
+        await prisma.$disconnect();
+    }   
 } 

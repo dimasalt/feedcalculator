@@ -1,0 +1,32 @@
+
+import promisePool from "@/utils/mysql";
+import { NextRequest, NextResponse } from "next/server";
+
+import next from "next";
+
+  
+
+/** gets list of feeds to the list */
+export const POST = async(request: NextRequest)=>  {
+
+    //const body = await request.json();   
+
+    //get user token
+    const cookie = request.cookies.get('token');
+    const userToken:string = cookie?.value ?? '';
+
+    try {
+
+        //get all feeds
+        const [rows,fields] = await promisePool.query('call feedGetAll(?)', [
+            userToken
+        ]);
+       
+        return new NextResponse(JSON.stringify({data: rows}));
+    } 
+    catch 
+    {
+        //otherwise return nothing
+        return new NextResponse(JSON.stringify({data: ''}));
+    }
+} 
