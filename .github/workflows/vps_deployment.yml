@@ -59,7 +59,7 @@ jobs:
          echo 'DB_NAME=${{secrets.DB_NAME}}' >> .env
          echo 'DB_USER=${{secrets.DB_USER}}' >> .env
          echo 'DB_PASS=${{secrets.DB_PASS}}' >> .env
-         echo 'DATABASE_URL=${{secrets.DATABASE_URL}}' >> .env
+         echo 'DATABASE_URL="${{secrets.DATABASE_URL}}"' >> .env
 
       - name: Run docker
         run: docker compose up --build --force-recreate -d
