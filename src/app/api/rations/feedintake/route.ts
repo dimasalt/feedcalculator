@@ -1,4 +1,4 @@
-import { feed_requirement, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -23,7 +23,7 @@ export const POST = async(request: NextRequest)=>  {
 
     try {     
 
-      let requirements: feed_requirement[] = [];
+      let requirements: any[] = [];
 
       if(body.adg === 0){
         requirements = await prisma.feed_requirement.findMany({
