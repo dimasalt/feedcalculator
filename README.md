@@ -2,7 +2,20 @@
 
 Free feed calculator for raising baby calves and finishing cattle up to 1000 lbs weight. 
 
-![application screenshot](/public/screenshot.jpg)
+[Farm Feed Calculator Website](https://www.farmfeedcalculator.com)
+
+
+Main page
+![application screenshot](/public/screenshots/mainpage.jpg)
+
+Feeds Page
+![application screenshot](/public/screenshots/feeds.jpg)
+
+Feed and nutriens requirements based on gains you want to get and their current weight
+![application screenshot](/public/screenshots/feed_requirements.jpg)
+
+Google lighthouse score
+![application screenshot](/public/screenshots/lighthouse_score.jpg)
 
 This software is working prototype and is currently in active development. An online working website coming soon... 
 Eventually more cattle types will be added as well ascalculations for other farm animals.
