@@ -19,7 +19,6 @@ RUN \
 # copy Prisma schema and generate Prisma client
 COPY prisma ./prisma
 
-
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
@@ -33,10 +32,11 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 #RUN mkdir /app/build
 
+#special for prisma
+RUN npx prisma generate
+
 RUN yarn build
 
-#special for prisma
-#RUN npx prisma generate
 
 # If using npm comment out above and use below instead
 # RUN npm run build
@@ -53,7 +53,7 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
-# COPY --from=builder prisma ./prisma
+#COPY --from=builder prisma ./prisma
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
