@@ -31,6 +31,9 @@ COPY . .
 
 RUN yarn build
 
+#special for prisma
+RUN npx prisma generate
+
 # If using npm comment out above and use below instead
 # RUN npm run build
 
