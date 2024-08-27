@@ -17,8 +17,9 @@ Feed and nutriens requirements based on gains you want to get and their current 
 Google lighthouse score
 ![application screenshot](/public/screenshots/lighthouse_score.jpg)
 
-This software is working prototype and is currently in active development. An online working website coming soon... 
-Eventually more cattle types will be added as well ascalculations for other farm animals.
+This software is working prototype and is currently in final stages of development. 
+
+Eventually more cattle types will be added as well as calculations for other farm animals.
 
 
 
