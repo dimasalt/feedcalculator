@@ -28,11 +28,11 @@ const ErrorDisplay = ({componentID}: ErrorDisplayProps) => {
             {formErrors.map((item, index) => {                    
                 return (                  
                     <div className='w-full mt-4 flex justify-around' key={index}>          
-                        <div className='w-3/4 bg-red-800 text-white shadow-md shadow-gray-300 text-lg py-2 px-4'>
+                        <div className='w-3/4 bg-red-700 text-white shadow-md shadow-gray-300 text-lg py-2 px-4'>
                             <i className="bi bi-exclamation-circle text-white text-xl me-3"></i>
                             {item}
                         </div>
-                        <div className='w-1/4 bg-red-800 py-2 flex justify-end'>
+                        <div className='w-1/4 bg-red-700 py-2 flex justify-end'>
                             <i className="bi bi-x-square text-white text-xl me-3 cursor-pointer" onClick={() => dispatch(addMessage(''))}></i>
                         </div>
                     </div>                  

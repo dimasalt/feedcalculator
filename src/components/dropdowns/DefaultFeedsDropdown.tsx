@@ -113,7 +113,7 @@ const DefaultFeedsDropdown = ({componentId} : DefaultFeedsDropdownProps) => {
                         </select>
                     </div>
                     <div className="col-span-1 md:col-span-2">                   
-                        <button type="submit" className="btn btn-submit hover:scale-105 hover:ease-in hover:duration-200" id="btn_feedSubmit">
+                        <button type="submit" className="btn btn-submit hover:scale-105 hover:ease-in hover:duration-200 w-full" id="btn_feedSubmit">
                             <i className="bi bi-check2-circle me-2"></i> 
                             Add Selected 
                         </button>                   

@@ -17,6 +17,9 @@ export const SelectedFeedsTable = ({componentId} : SelectedFeedsTableProps) => {
 
     //removing feed
     const onClickSelectedFeedRemove = (id: number = 0) => {
+
+        console.log(id);
+
         //update table     
         deleteSelectedFeed(id);
 
@@ -48,13 +51,14 @@ export const SelectedFeedsTable = ({componentId} : SelectedFeedsTableProps) => {
                     { data?.map((item: Feed) =>{
                         return (                            
                             <tr key={item.feed_name}>
+                                {/* <td className="font-semibold text-left">{item.feed_to_user[0].id}</td> */}
                                 <td className="font-semibold text-left">{item.feed_name}</td>
                                 <td className="text-center">{item.feed_cp}</td>
                                 <td className="text-center">{item.feed_tdn}</td>
                                 <td className="text-center">{item.feed_dm}</td>
                                 <td className="text-center">{item.feed_usage}</td>
                                 <td className="text-center">                                      
-                                    <a href="#" className='text-2xl ms-2 group relative' onClick={() => onClickSelectedFeedRemove(item.id)}> 
+                                    <a href="#" className='text-2xl ms-2 group relative' onClick={() => onClickSelectedFeedRemove(item.feed_to_user[0].id)}> 
                                         <i className="bi bi-trash3 me-2 text-red-600 text-base"></i>
                                         <span className="pointer-events-none absolute -top-7 -right-10 w-max rounded bg-gray-700 px-5 py-1 text-sm font-medium text-gray-50 opacity-0 shadow transition-opacity group-hover:opacity-100">
                                             Remove Feed

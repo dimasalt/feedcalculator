@@ -10,7 +10,8 @@ export interface Feed {
     feed_usage: number,
     user_token?: string,
     user_selected?: number,
-    is_default?: number
+    is_default?: number,
+    [x: string]: any
 };
 
 

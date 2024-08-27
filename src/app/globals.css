@@ -21,7 +21,7 @@
 
   /* green submit button */
   .btn {
-    @apply px-6 h-10 font-semibold text-lg w-full;
+    @apply px-6 h-10 font-semibold text-lg;
   }
 
   .btn-submit {
