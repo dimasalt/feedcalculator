@@ -13,7 +13,6 @@ export const POST = async(request: NextRequest)=>  {
      //get user token
      const cookie = request.cookies.get('token');
      const userToken:string = cookie?.value ?? '';
-    //const userToken: string = '1';
 
     //prisma client
     const prisma = new PrismaClient();
@@ -59,23 +58,18 @@ export const POST = async(request: NextRequest)=>  {
     finally{
         //disconnect prisma
         await prisma.$disconnect();
-    }
-
-    // try {
-    //     const [rows, fields] = await promisePool.query('call feedGetSelected(?)', [
-    //         userToken
-    //     ]);
-             
-    //     return new NextResponse(JSON.stringify({data: rows}));   
-    // }
-    // catch(error){
-    //     throw error;
-    // }
+    }  
 } 
 
 
-//a function that will run on first of every month
-//and will maintain our feed table by removing old feeds and updating feed_date for current user
+
+/**
+ * ***********************************************************************
+ * @description Function runs on first of every month and maintains our feed table by removing old feeds and updating feed_date for current user
+ * @param userToken 
+ * @returns nothing
+ * ***********************************************************************
+ */
 const runOnFirstOfMonth = async(userToken: string) => {
 
     //prisma client
@@ -84,7 +78,8 @@ const runOnFirstOfMonth = async(userToken: string) => {
     try 
     {
         //lets update feed_date for all the feeds in feed table that have same user token as user token
-        await prisma.feed.updateMany({
+        //we don't want this functionality to run async as we want to make sure that all existing feeds updated before we delete old feeds        
+        prisma.feed.updateMany({
             where: {
                 user_token: userToken
             },
@@ -95,7 +90,7 @@ const runOnFirstOfMonth = async(userToken: string) => {
 
 
         //first we need to remove a prisma query all feeds that are older than 1 months and default = 0 and token is same as user token
-        await prisma.feed.deleteMany({
+        prisma.feed.deleteMany({
             where: {   
                 NOT: {
                     user_token: userToken,
@@ -105,10 +100,6 @@ const runOnFirstOfMonth = async(userToken: string) => {
                 },
                 is_default: 0
             }
-        });
-            
-            return true;
-        } catch (error) {
-            return false;
-        }
+        });                
+    } catch (error) {}
 }
