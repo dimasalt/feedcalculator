@@ -19,6 +19,38 @@ export const POST = async(request: NextRequest)=>  {
     const prisma = new PrismaClient();
 
     try {
+
+        //if condition to run this part of code on first of every month
+        if(new Date().getDay() === 1){
+
+        }
+    
+
+        //lets update feed_date for all the feeds in feed table that have same user token as user token
+        await prisma.feed.updateMany({
+            where: {
+                user_token: userToken
+            },
+            data: {
+                feed_date: new Date()
+            }
+        });
+
+
+        //first we need to remove a prisma query all feeds that are older than 1 months and default = 0 and token is same as user token
+        await prisma.feed.deleteMany({
+            where: {   
+                NOT: {
+                    user_token: userToken,
+                },                           
+                feed_date: {
+                    lte: new Date(new Date().setMonth(new Date().getMonth() - 1))
+                },
+                is_default: 0
+            }
+        });
+
+
         const feeds = await prisma.feed.findMany({               
             where: {
                 feed_to_user: {
@@ -43,9 +75,7 @@ export const POST = async(request: NextRequest)=>  {
                 id: 'asc'
             }
         });
-
-        // console.log(JSON.stringify({data: feeds}, 0, 2));        
-
+       
         return new NextResponse(JSON.stringify({data: [feeds]}));   
     }
     catch(error){     
