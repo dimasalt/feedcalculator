@@ -22,34 +22,9 @@ export const POST = async(request: NextRequest)=>  {
 
         //if condition to run this part of code on first of every month
         if(new Date().getDay() === 1){
-
+            await runOnFirstOfMonth(userToken);
         }
     
-
-        //lets update feed_date for all the feeds in feed table that have same user token as user token
-        await prisma.feed.updateMany({
-            where: {
-                user_token: userToken
-            },
-            data: {
-                feed_date: new Date()
-            }
-        });
-
-
-        //first we need to remove a prisma query all feeds that are older than 1 months and default = 0 and token is same as user token
-        await prisma.feed.deleteMany({
-            where: {   
-                NOT: {
-                    user_token: userToken,
-                },                           
-                feed_date: {
-                    lte: new Date(new Date().setMonth(new Date().getMonth() - 1))
-                },
-                is_default: 0
-            }
-        });
-
 
         const feeds = await prisma.feed.findMany({               
             where: {
@@ -97,3 +72,43 @@ export const POST = async(request: NextRequest)=>  {
     //     throw error;
     // }
 } 
+
+
+//a function that will run on first of every month
+//and will maintain our feed table by removing old feeds and updating feed_date for current user
+const runOnFirstOfMonth = async(userToken: string) => {
+
+    //prisma client
+    const prisma = new PrismaClient();
+
+    try 
+    {
+        //lets update feed_date for all the feeds in feed table that have same user token as user token
+        await prisma.feed.updateMany({
+            where: {
+                user_token: userToken
+            },
+            data: {
+                feed_date: new Date()
+            }
+        });
+
+
+        //first we need to remove a prisma query all feeds that are older than 1 months and default = 0 and token is same as user token
+        await prisma.feed.deleteMany({
+            where: {   
+                NOT: {
+                    user_token: userToken,
+                },                           
+                feed_date: {
+                    lte: new Date(new Date().setMonth(new Date().getMonth() - 1))
+                },
+                is_default: 0
+            }
+        });
+            
+            return true;
+        } catch (error) {
+            return false;
+        }
+}
