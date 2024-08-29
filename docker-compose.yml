@@ -1,6 +1,6 @@
 services:
   feed_calculator:    
-    container_name: feedcalculator_app
+    container_name: feedcalculator
     environment:
       NODE_ENV: production
     build: 
