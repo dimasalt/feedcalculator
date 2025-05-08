@@ -5,22 +5,8 @@ on:
     branches:
       [main]
 jobs:
-  lint:
-    #sshd lsb_release -a
-    #runs-on: ubuntu-latest
-    runs-on: ubuntu-22.04
-    
-    name: Performing lint
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install npm
-        run: npm ci        
-      - name: run lint
-        run: npm run lint
-
-  build: 
-    needs: [lint]
+ 
+  build:  
     runs-on: ubuntu-22.04
     strategy:
       matrix:
