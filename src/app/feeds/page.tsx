@@ -236,7 +236,7 @@ export default function Feeds() {
         />
       
 
-        <div className="container max-w-screen-xl mx-auto pt-14" >
+        <div className="container max-w-(--breakpoint-xl) mx-auto pt-14" >
             <div className="flex justify-center">            
                 {/* <!-- feeds display table --> */}
                 {feeds.length > 0 && (

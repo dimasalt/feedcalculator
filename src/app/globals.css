@@ -1,11 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap')
+layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
+@plugin 'tailwindcss-animate';
 
+@custom-variant dark (&:is(.dark *));
 
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 0.6rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility btn {
+  /* green submit button */
+  @apply px-6 h-10 font-semibold text-lg;
+}
+
+@utility btn-submit {
+  @apply text-gray-100 bg-teal-600 hover:bg-teal-800;
+  /* background-color: #2A9D8F; */
+}
+
+@utility btn-cancel {
+  @apply bg-red-700 hover:bg-red-600 text-gray-200;
+}
 
 @layer components {
 
@@ -13,34 +109,20 @@
   input[type="text"], 
   input[type="number"]
   {
-      @apply h-10 border px-4 w-full bg-gray-50 text-gray-800 appearance-none outline-none border-gray-400;
+      @apply h-10 border px-4 w-full bg-gray-50 text-gray-800 appearance-none outline-hidden border-gray-400;
   }
 
 
   select {
-      @apply h-10 border px-4 w-full bg-white text-gray-800 outline-none border-gray-400; 
-  }
-
-  /* green submit button */
-  .btn {
-    @apply px-6 h-10 font-semibold text-lg;
-  }
-
-  .btn-submit {
-    @apply text-gray-100 bg-teal-600 hover:bg-teal-800;
-    /* background-color: #2A9D8F; */
-  }
-
-  .btn-cancel {
-    @apply bg-red-700 hover:bg-red-600 text-gray-200; 
+      @apply h-10 border px-4 w-full bg-white text-gray-800 outline-hidden border-gray-400; 
   }
 
   textarea {
-    @apply border px-2 w-full bg-gray-50 text-gray-800 appearance-none outline-none;
+    @apply border px-2 w-full bg-gray-50 text-gray-800 appearance-none outline-hidden;
   }
 
   table > thead > tr > th {
-    @apply ps-2 h-10 text-lg bg-dark-50 text-gray-300 w-60 border-r font-normal not-italic;
+    @apply ps-2 h-10 text-lg bg-[#264653] text-gray-300 w-60 border-r font-normal not-italic;
   }
 
   table > tbody > tr > td {
@@ -56,6 +138,11 @@ body {
     color: #323232;
     text-align: left;
     background-color: #f2f7f8;
+
+    .bg-dark-50, nav {
+      background-color: #264653 !important;
+      color: #f2f7f8;
+    }
 } 
 
 .bg-dark-50, nav {

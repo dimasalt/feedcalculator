@@ -98,7 +98,7 @@ export default function FeedCalculator() {
         <ErrorDisplay componentID="errorDisplayId" />     
 
 
-        <div className="container max-w-screen-xl grid md:grid-cols-5 row-span-1 mx-auto">
+        <div className="container max-w-(--breakpoint-xl) grid md:grid-cols-5 row-span-1 mx-auto">
             <div className="w-full md:col-span-3 mt-8 pe-5">
                 {/* <!-- drop down with available feeds for the current user --> */}
                 <DefaultFeedsDropdown componentId="feed_select" />
@@ -130,7 +130,7 @@ export default function FeedCalculator() {
                         
                         <div className="col-span-1 mt-5 md:mt-0">
                             <label htmlFor="text_heads"># of Heads</label>
-                            <input type="text" onChange={(e) => onHeadsChange(e.target.value)} className="rounded-none w-full border border-gray-400 h-8 ps-3" id="text_heads" />
+                            <input type="text" onChange={(e) => onHeadsChange(e.target.value)} className="rounded-none w-full border border-gray-400 h-10 ps-3" id="text_heads" />
                         </div>                           
                     </div>
 
@@ -150,7 +150,7 @@ export default function FeedCalculator() {
 
         {/* <!-- tables with calculations --> */}
         {/* <!------------------- calculation results per weight --------------------> */}
-        <div className="container max-w-screen-xl grid grid-cols-1 md:grid-cols-12 mt-10 mx-auto">
+        <div className="container max-w-(--breakpoint-xl) grid grid-cols-1 md:grid-cols-12 mt-10 mx-auto">
             {/* <!-- left side result display of calculations by weight and range --> */}
             <div className="col-span-1 md:col-span-7 mt-8">
                 <CalculatorResultsForWeight rationResult={rationResult} />               

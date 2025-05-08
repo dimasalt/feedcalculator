@@ -72,7 +72,7 @@ export default function Ration() {
     return (    
         <>
         {/* <!-- table to display information --> */} 
-        <div className='container max-w-screen-xl mx-auto mt-10'>
+        <div className='container max-w-(--breakpoint-xl) mx-auto mt-10'>
 
             <div className='grid grid-cols-1 md:grid-cols-5 mb-5'>
 
@@ -100,7 +100,7 @@ export default function Ration() {
         </div>
 
         
-        <div className="container max-w-screen-xl mx-auto">
+        <div className="container max-w-(--breakpoint-xl) mx-auto">
             <div className='flex justify-end mt-2'>
                 <span className='pe-1 font-semibold text-sm'>* All weights calculated in lbs</span>
             </div>

@@ -13,7 +13,7 @@ export interface FeedItemProps  {
 export const FeedForm = ({feedItem, hundleChange, onClickClearAddFeedForm, hundleSumbit} : FeedItemProps) => {
     return(
         <form onSubmit={(e) => hundleSumbit(e)} >
-            <div className='container max-w-screen-xl mx-auto mt-7'>           
+            <div className='container max-w-(--breakpoint-xl) mx-auto mt-7'>           
                 <div className="grid grid-cols-3 md:grid-cols-9 gap-0 shadow-md shadow-gray-300">           
                     <div className='col-span-1 md:col-span-2'>
                         <label htmlFor="txt_feed_name" className='flex flex-wrap ps-2'>Feed Name</label>
@@ -29,7 +29,7 @@ export const FeedForm = ({feedItem, hundleChange, onClickClearAddFeedForm, hundl
                     </div>
                     <div className="col-span-1">
                         <label htmlFor="text_dm" className="flex flex-wrap ps-2">DM %</label>
-                        <input type='number' value={feedItem.feed_dm}  onChange={(e) => hundleChange(e)} name='feed_dm' className="h-9 w-full px-5 border border-gray-400" id="text_dm" placeholder="Dry Matter" />
+                        <input type='number' value={feedItem.feed_dm}  onChange={(e) => hundleChange(e)} name='feed_dm' className="h-10 w-full px-5 border border-gray-400" id="text_dm" placeholder="Dry Matter" />
                     </div>
                     <div className="col-span-1">
                         <label htmlFor="select_type" className='flex flex-wrap ps-2'>Feed Type</label>
@@ -43,7 +43,7 @@ export const FeedForm = ({feedItem, hundleChange, onClickClearAddFeedForm, hundl
                     </div>
                     <div className="col-span-1">
                         <label htmlFor="text_feed_usage" className='flex flex-wrap ps-2'>Usage %</label>
-                        <input type='number' value={feedItem.feed_usage} onChange={(e) => hundleChange(e)} name='feed_usage' className="h-9 w-full px-5 border border-gray-400" id="text_feed_usage" placeholder="Usage %" />
+                        <input type='number' value={feedItem.feed_usage} onChange={(e) => hundleChange(e)} name='feed_usage' className="h-10 w-full px-5 border border-gray-400" id="text_feed_usage" placeholder="Usage %" />
                     </div>         
                     <div className="col-span-3 md:col-span-2 pt-6">            
                         <button type='submit' className='btn btn-submit w-1/2'> 

@@ -24,7 +24,7 @@ const ErrorDisplay = ({componentID}: ErrorDisplayProps) => {
     const dispatch = useDispatch();   
 
   return (
-    <div className="container max-w-screen-xl mx-auto flex justify-around" id={componentID}>           
+    <div className="container max-w-(--breakpoint-xl) mx-auto flex justify-around" id={componentID}>           
             {formErrors.map((item, index) => {                    
                 return (                  
                     <div className='w-full mt-4 flex justify-around' key={index}>          
