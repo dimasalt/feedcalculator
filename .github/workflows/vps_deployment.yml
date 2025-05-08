@@ -5,25 +5,8 @@ on:
     branches:
       [main]
 jobs:
-  lint:
-    #sshd lsb_release -a
-    #runs-on: ubuntu-latest
-    runs-on: ubuntu-22.04
-    
-    name: Performing lint
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install npm
-        run: npm ci        
-      - name: run lint
-        run: npm run lint
-
-        # Lint failures should not fail the workflow
-        continue-on-error: true
 
   build: 
-    # needs: [lint]
     runs-on: ubuntu-22.04
     strategy:
       matrix:
@@ -40,9 +23,6 @@ jobs:
         run: npm ci 
       - name: build Next.js project
         run: npm run build
-
-        # --no-lint flag to skip linting during build
-      - run: npm run build -- --no-lint
 
   deploy:
     needs: [build]
