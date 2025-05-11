@@ -1,7 +1,7 @@
 
 import { runOnFirstOfMonth } from "@/services/database/dbCleanup";
-import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
+import { PrismaClient } from "@/generated/prisma";
 
   
 

@@ -1,6 +1,6 @@
 
 // import promisePool from "@/utils/mysql";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@/generated/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
   

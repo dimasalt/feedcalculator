@@ -22,10 +22,10 @@ export const useFetchFeeds = () => {
             // This will activate the closest `error.js` Error Boundary
             throw new Error('Failed to fetch data');
         }      
+            
+        const response = await res.json();         
         
-        const response = await res.json();
-        
-        setFeeds(response.data[0]);
+        setFeeds(response.data[0]);        
     }
 
 

@@ -1,6 +1,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@/generated/prisma";
+
 
   
 
@@ -32,7 +33,28 @@ export const POST = async(request: NextRequest)=>  {
             }
         });
 
-        return new NextResponse(JSON.stringify({data: [feeds]}));
+
+
+        //console.log("Feeds found:", feeds.length);      
+         // Convert any BigInt values to regular numbers
+        // const safeFeeds = feeds.map(feed => {
+        //     // Create a new plain object with all properties converted to safe types
+        //     return Object.fromEntries(
+        //         Object.entries(feed).map(([key, value]) => {
+        //             // Convert BigInt to Number if needed
+        //             if (typeof value === 'bigint') {
+        //                 return [key, Number(value)];
+        //             }
+        //             return [key, value];
+        //         })
+        //     );
+        // });
+
+        //console.log("Safe Feeds found:", safeFeeds);
+       return new NextResponse(JSON.stringify({data: [feeds]}));
+       //return NextResponse.json({data: [feeds]}, {status: 200});
+     //return NextResponse.json({data: safeFeeds}, {status: 200});
+
     } 
     catch 
     {

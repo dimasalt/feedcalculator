@@ -1,30 +1,31 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model feed {
-  id           Int            @id @default(autoincrement())
+  id           Int            @id(map: "idx_16387_PRIMARY") @default(autoincrement())
   feed_name    String         @db.VarChar(150)
   feed_cp      Int
   feed_tdn     Int
   feed_dm      Int            @default(0)
   feed_type    String         @db.VarChar(25)
   feed_usage   Int            @default(100)
-  is_default   Int            @default(0) @db.TinyInt
+  is_default   Int            @default(0) @db.SmallInt
   user_token   String         @default("0") @db.VarChar(64)
-  feed_date    DateTime       @default(now()) @db.DateTime(0)
+  feed_date    DateTime?      @db.Timestamptz(6)
   feed_to_user feed_to_user[]
 }
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model feed_requirement {
-  id          Int     @id @default(autoincrement())
+  id          Int     @id(map: "idx_16396_PRIMARY") @default(autoincrement())
   weight      Int     @default(0)
   animal_type String  @db.VarChar(50)
   adg         Decimal @db.Decimal(19, 1)
@@ -32,16 +33,16 @@ model feed_requirement {
   cp          Decimal @default(0.0) @db.Decimal(19, 1)
   tdn         Int
 
-  @@index([adg], map: "adg")
-  @@index([weight], map: "weight")
+  @@index([adg], map: "idx_16396_adg")
+  @@index([weight], map: "idx_16396_weight")
 }
 
 model feed_to_user {
-  id         Int      @id @default(autoincrement())
+  id         Int       @id(map: "idx_16403_PRIMARY") @default(autoincrement())
   feed_id    Int
-  user_token String   @default("") @db.VarChar(64)
-  at_date    DateTime @default(now()) @db.DateTime(0)
-  feed       feed     @relation(fields: [feed_id], references: [id], onDelete: Cascade, map: "FK_feed_to_user_feed")
+  user_token String    @default("") @db.VarChar(64)
+  at_date    DateTime? @db.Timestamptz(6)
+  feed       feed      @relation(fields: [feed_id], references: [id], onDelete: Cascade, map: "FK_feed_to_user_feed")
 
-  @@index([feed_id], map: "FK_feed_to_user_feed")
+  @@index([feed_id], map: "idx_16403_FK_feed_to_user_feed")
 }

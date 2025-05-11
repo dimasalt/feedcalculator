@@ -2,7 +2,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Feed } from '../../../../types/Feed';
 
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@/generated/prisma";
+
   
 /** Adding new feed to the list */
 export const POST = async(request: NextRequest) =>  {
