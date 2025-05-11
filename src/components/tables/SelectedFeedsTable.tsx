@@ -18,8 +18,6 @@ export const SelectedFeedsTable = ({componentId} : SelectedFeedsTableProps) => {
     //removing feed
     const onClickSelectedFeedRemove = (id: number = 0) => {
 
-        console.log(id);
-
         //update table     
         deleteSelectedFeed(id);
 

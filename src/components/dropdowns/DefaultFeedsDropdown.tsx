@@ -24,8 +24,6 @@ const DefaultFeedsDropdown = ({componentId} : DefaultFeedsDropdownProps) => {
      // <!-- get feeds -->
     const [feeds]:Feed[][] = useFetchFeeds() ;
 
-    console.log('feeds', feeds);
-
     //selected feed item to pass up to a page to update selected feeds table
     const feedId = useRef('0'); 
 
