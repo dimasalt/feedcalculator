@@ -15,11 +15,11 @@ export const POST = async(request: NextRequest)=>  {
     const userToken:string = cookie?.value ?? '';
 
     //prisma client
-    //const prisma = new PrismaClient();
-    const prisma = new PrismaClient({
-        log: ['query', 'info', 'warn', 'error'],
-        errorFormat: 'pretty'
-    });
+    const prisma = new PrismaClient();
+    // const prisma = new PrismaClient({
+    //     log: ['query', 'info', 'warn', 'error'],
+    //     errorFormat: 'pretty'
+    // });
 
     try {
         //get all feeds
