@@ -16,39 +16,6 @@ services:
 
 
 
-  # app_db:
-  #   container_name: mariadb   
-  #   image: mariadb:11.4.2-noble
-  #   environment:   
-  #     - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=no
-  #     - MARIADB_DATABASE=feedcalculator
-  #     - MARIADB_USER=appuser
-  #     - MARIADB_PASSWORD=root123
-  #     - MARIADB_ROOT_PASSWORD=root123
-  #   ports:
-  #     - 3307:3306
-  #   volumes:
-  #     - ./mysql_data:/var/lib/mysql
-  #     - ./backup/backup.sql:/docker-entrypoint-initdb.d/backup.sql
-  #   restart: always
-  #   networks: 
-  #     - appsnetwork
-
-#   app_server:
-#     container_name: apache2
-#     image: httpd:alpine3.19
-#     volumes:
-#       - ${PWD}/website:/usr/local/apache2/htdocs
-#     ports: 
-#       - 8080:80
-#     restart: always
-#     networks:
-#       - appsnetwork
-
-# volumes:
-#   mysql_data:
-#   backup:
-
 networks:
   webapp:
     driver: bridge
