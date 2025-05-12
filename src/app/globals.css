@@ -8,6 +8,8 @@ layer(base);
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  --grid-template-columns-12: repeat(12, minmax(0, 1fr));
+
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
@@ -90,13 +92,11 @@ layer(base);
 }
 
 @utility btn {
-  /* green submit button */
   @apply px-6 h-10 font-semibold text-lg;
 }
 
 @utility btn-submit {
   @apply text-gray-100 bg-teal-600 hover:bg-teal-800;
-  /* background-color: #2A9D8F; */
 }
 
 @utility btn-cancel {

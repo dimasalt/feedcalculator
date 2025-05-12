@@ -105,7 +105,7 @@ export default function FeedCalculator() {
             </div>
             
             {/* <!-- right side --> */}
-            <div className="w-full md:col-span-2 md:row-span-2 pe-5 mt-8">
+            <div className="w-full md:col-span-2 md:row-span-2 mt-8">
                 {/* <!-- feeds selected by user for calculations --> */}                          
                 <SelectedFeedsTable componentId="selectedTableFeeds" />
             </div>

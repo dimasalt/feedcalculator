@@ -49,11 +49,11 @@ export const POST = async(request: NextRequest)=>  {
             orderBy: {
                 id: 'asc'
             }
-        });
+        });    
        
         return new NextResponse(JSON.stringify({data: [feeds]}));   
     }
-    catch(error){     
+    catch(error){           
         return new NextResponse(JSON.stringify({data: []}));   
     }
     finally{
