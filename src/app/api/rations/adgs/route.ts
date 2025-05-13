@@ -13,7 +13,10 @@ export const POST = async(request: NextRequest)=>  {
             select: {                
                 adg: true
             },
-            distinct: ['adg']
+            distinct: ['adg'],
+            orderBy: {
+                adg: 'asc'
+            }
         });
         return new NextResponse(JSON.stringify({data: [adgs]}));   
     }

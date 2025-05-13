@@ -1,5 +1,3 @@
-
-// import promisePool from "@/utils/mysql";
 import { PrismaClient } from "@/generated/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -39,15 +37,4 @@ export const POST = async(request: NextRequest)=>  {
         await prisma.$disconnect();
      }
 
-    // try {
-    //     const [rows, fields] = await promisePool.query('call feedAddSelected(?, ?)', [
-    //         id,
-    //         userToken
-    //     ]);
-
-    //     return new NextResponse(JSON.stringify({data: rows}));   
-    // }
-    // catch(error){
-    //     throw error;
-    // }
 } 
