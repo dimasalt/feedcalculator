@@ -46,11 +46,11 @@ export const FeedForm = ({feedItem, hundleChange, onClickClearAddFeedForm, hundl
                         <input type='number' value={feedItem.feed_usage} onChange={(e) => hundleChange(e)} name='feed_usage' className="h-10 w-full px-5 border border-gray-400" id="text_feed_usage" placeholder="Usage %" />
                     </div>         
                     <div className="col-span-3 md:col-span-2 pt-6">            
-                        <button type='submit' className='btn btn-submit w-1/2'> 
+                        <button type='submit' className='btn btn-submit w-1/2 cursor-pointer'> 
                             <i className="bi bi-check2-circle text-white me-2"></i>
                             Add
                         </button>
-                        <button className='btn btn-cancel w-1/2' onClick={(e) => onClickClearAddFeedForm(e)}> 
+                        <button className='btn btn-cancel w-1/2 cursor-pointer' onClick={(e) => onClickClearAddFeedForm(e)}> 
                             <i className="bi bi-x-circle text-white me-2"></i>
                             Clear
                         </button>              
