@@ -134,11 +134,11 @@ export default function Feeds() {
 
 
     // <!-- when remove button got clicked show modal dialog  -->
-    const onClickRemoveModal = (id: number) => {
+    const onClickRemoveModal = (id: number, feed_name: string) => {
 
         setFeedItem({
             id : id,
-            feed_name: '',
+            feed_name: feed_name,
             feed_cp : 0,
             feed_tdn : 0,
             feed_dm: 0,
@@ -148,6 +148,7 @@ export default function Feeds() {
         });
 
         feedItem.id = id;
+        feedItem.feed_name = feed_name;
 
         document.querySelector('#removeModal')?.classList?.remove('hidden');
     }
@@ -246,7 +247,7 @@ export default function Feeds() {
         </div>
 
         {/* <!-- Feeds and confirmation popup modal --> */}
-        <FeedRemovalModal removeFeed={removeFeed} />    
+        <FeedRemovalModal removeFeed={removeFeed} feedName={feedItem.feed_name} />    
     </>
   );
 }

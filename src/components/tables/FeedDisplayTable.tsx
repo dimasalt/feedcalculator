@@ -2,7 +2,7 @@
 
 export interface FeedDisplayTableProps {
     feeds : any[],
-    onClickRemoveModal: (id: number) => void
+    onClickRemoveModal: (id: number, feed_name: string) => void
 }
 
 
@@ -34,7 +34,7 @@ export const FeedDisplayTable = ({feeds, onClickRemoveModal}: FeedDisplayTablePr
                             <td className='ps-3 py-2 bg-white text-black'>
                                 { item.is_default === 0 ?
                                     // <!-- if feed is not default allow it to be removed -->
-                                    <a href="#" className='text-2xl ms-2 group relative' onClick={() => onClickRemoveModal(item.id)}>                     
+                                    <a href="#" className='text-2xl ms-2 group relative' onClick={() => onClickRemoveModal(item.id, item.feed_name)}>                     
                                         <i className="bi bi-trash3 text-red-600 text-base me-5"></i>
                                         <span className="pointer-events-none absolute -top-7 -right-10 w-max rounded bg-gray-700 px-5 py-1 text-sm font-medium text-gray-50 opacity-0 shadow transition-opacity group-hover:opacity-100">
                                             Remove feed
