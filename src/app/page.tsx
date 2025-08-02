@@ -114,7 +114,7 @@ export default function FeedCalculator() {
             <div className="w-full md:col-span-3 row-span-1 pe-5">
                  {/* <!-- calculator input form --> */}
                 <form onSubmit={(e) => calculateRation(e)}>                    
-                    <div className="grid grid-cols-2 md:grid-cols-4 mt-8 shadow-md shadow-gray-300">                   
+                    <div className="grid grid-cols-2 md:grid-cols-4 mt-8">                   
                         <div className="col-span-1">
                             <label htmlFor="weight_start_select">Weight Start</label>
                             <StartWeightDropDown selectedStartWeightValue={calculatorInputData.current.startWeight} onWeightChange={onWeightChange} />                            
