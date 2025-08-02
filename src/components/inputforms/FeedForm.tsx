@@ -14,7 +14,7 @@ export const FeedForm = ({feedItem, hundleChange, onClickClearAddFeedForm, hundl
     return(
         <form onSubmit={(e) => hundleSumbit(e)} >
             <div className='container max-w-(--breakpoint-xl) mx-auto mt-7'>           
-                <div className="grid grid-cols-3 md:grid-cols-9 gap-0 shadow-md shadow-gray-300">           
+                <div className="grid grid-cols-3 md:grid-cols-9 gap-0">           
                     <div className='col-span-1 md:col-span-2'>
                         <label htmlFor="txt_feed_name" className='flex flex-wrap ps-2'>Feed Name</label>
                         <input type='text' value={feedItem.feed_name} onChange={(e) => hundleChange(e)} name='feed_name' id="txt_feed_name" placeholder="Feed Name" />   

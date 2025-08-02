@@ -138,7 +138,7 @@ export default function FeedCalculator() {
                         <div className="col-span-2 col-start-2 md:col-span-1 md:col-start-4 flex md:justify-end">
                             <button className="btn btn-submit bg-dark-50 cursor-pointer" 
                                     type="submit" id="btn_calculate">
-                                <i className="bi bi-calculator me-2"></i> 
+                                <i className="bi bi-calculator me-1"></i> 
                                 Calculate 
                             </button>         
                         </div>                   
