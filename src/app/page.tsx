@@ -18,6 +18,7 @@ import ErrorDisplay from "@/components/layout/ErrorDisplay";
 import CalculatorResultsForWeight from "@/components/tables/CalculatorResultsForWeight";
 import { CalculatorResultsForBulk } from "@/components/tables/CalculatorResultsForBulk";
 import PageHeadline from "@/components/layout/PageHeadline";
+import { BiCalculator } from "react-icons/bi";
 
 
 
@@ -136,9 +137,10 @@ export default function FeedCalculator() {
 
                     <div className="grid grid-cols-4 mt-4">                              
                         <div className="col-span-2 col-start-2 md:col-span-1 md:col-start-4 flex md:justify-end">
-                            <button className="btn btn-submit bg-dark-50 cursor-pointer" 
+                            <button className="btn btn-submit bg-dark-50 cursor-pointer flex items-center" 
                                     type="submit" id="btn_calculate">
-                                <i className="bi bi-calculator me-1"></i> 
+                                {/* <i className="bi bi-calculator me-1"></i>  */}
+                                <BiCalculator className='me-1 h-5 w-5' />
                                 Calculate 
                             </button>         
                         </div>                   

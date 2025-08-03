@@ -11,7 +11,7 @@ import { Feed } from "@/types/Feed";
 import { selectedFeedItemSchema } from "@/validations/schemas/FeedSelectSchema";
 
 import { toast } from "../ui/use-toast";
-
+import { FiCheckCircle } from "react-icons/fi";
 
 
 export interface DefaultFeedsDropdownProps {
@@ -114,8 +114,8 @@ const DefaultFeedsDropdown = ({componentId} : DefaultFeedsDropdownProps) => {
                         </select>
                     </div>
                     <div className="col-span-1 md:col-span-2">                   
-                        <button type="submit" className="btn btn-submit hover:scale-105 hover:ease-in hover:duration-200 w-full cursor-pointer" id="btn_feedSubmit">
-                            <i className="bi bi-check2-circle me-2"></i> 
+                        <button type="submit" className="btn btn-submit hover:scale-105 hover:ease-in hover:duration-200 w-full cursor-pointer flex items-center" id="btn_feedSubmit">                        
+                            <FiCheckCircle className='me-2 h-5 w-5' />
                             Add Selected 
                         </button>                   
                     </div>
