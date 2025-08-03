@@ -1,5 +1,6 @@
 import { Feed } from '@/types/Feed';
 import { FormEvent, MouseEvent } from 'react';
+import { FiCheckCircle, FiXCircle } from 'react-icons/fi';
 
 
 export interface FeedItemProps  {
@@ -45,13 +46,13 @@ export const FeedForm = ({feedItem, hundleChange, onClickClearAddFeedForm, hundl
                         <label htmlFor="text_feed_usage" className='flex flex-wrap ps-2'>Usage %</label>
                         <input type='number' value={feedItem.feed_usage} onChange={(e) => hundleChange(e)} name='feed_usage' className="h-10 w-full px-5 border border-gray-400" id="text_feed_usage" placeholder="Usage %" />
                     </div>         
-                    <div className="col-span-3 md:col-span-2 pt-6">            
-                        <button type='submit' className='btn btn-submit w-1/2 cursor-pointer'> 
-                            <i className="bi bi-check2-circle text-white me-2"></i>
+                    <div className="col-span-3 md:col-span-2 pt-6 flex">            
+                        <button type='submit' className='btn btn-submit w-1/2 cursor-pointer flex items-center'> 
+                            <FiCheckCircle className='me-2 h-5 w-5' />
                             Add
                         </button>
-                        <button className='btn btn-cancel w-1/2 cursor-pointer' onClick={(e) => onClickClearAddFeedForm(e)}> 
-                            <i className="bi bi-x-circle text-white me-2"></i>
+                        <button className='btn btn-cancel w-1/2 cursor-pointer flex items-center' onClick={(e) => onClickClearAddFeedForm(e)}> 
+                            <FiXCircle className='me-2 h-5 w-5' />
                             Clear
                         </button>              
                     </div>           

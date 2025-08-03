@@ -1,3 +1,4 @@
+import { GoTrash } from "react-icons/go"
 
 
 export interface FeedDisplayTableProps {
@@ -31,11 +32,11 @@ export const FeedDisplayTable = ({feeds, onClickRemoveModal}: FeedDisplayTablePr
                             <td className='ps-9 py-2 bg-white text-black'>{item.feed_dm}</td>
                             <td className='ps-3 py-2 bg-white text-black'>{item.feed_type }</td>
                             <td className='ps-3 py-2 bg-white text-black'>{item.feed_usage}</td>
-                            <td className='ps-3 py-2 bg-white text-black'>
+                            <td className='ps-3 py-2 bg-white text-black flex justify-center items-center'>
                                 { item.is_default === 0 ?
                                     // <!-- if feed is not default allow it to be removed -->
-                                    <a href="#" className='text-2xl ms-2 group relative' onClick={() => onClickRemoveModal(item.id, item.feed_name)}>                     
-                                        <i className="bi bi-trash3 text-red-600 text-base me-5"></i>
+                                    <a href="#" className='text-2xl ms-2 group relative flex items-center' onClick={() => onClickRemoveModal(item.id, item.feed_name)}>                                                            
+                                        <GoTrash className="text-red-600 h-5 w-5" />
                                         <span className="pointer-events-none absolute -top-7 -right-10 w-max rounded bg-gray-700 px-5 py-1 text-sm font-medium text-gray-50 opacity-0 shadow transition-opacity group-hover:opacity-100">
                                             Remove feed
                                         </span>                   

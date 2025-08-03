@@ -6,9 +6,9 @@ import { memo } from 'react';
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import '../../app/globals.css';
 
-import { BiCalculator } from "react-icons/bi";
+
 import { MdGrass, MdOutlineCompassCalibration } from "react-icons/md";
-import { FiHelpCircle } from "react-icons/fi";
+import { FiDivideSquare, FiHelpCircle } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
 
@@ -46,7 +46,8 @@ const Navbar = () => {
                 {/* <!-- an actual middle menu --> */}
                 <div className=" text-gray-400 me-10 justify-center mt-2 text-lg hidden md:flex">                       
                     <Link className="hover:text-gray-100 me-8 flex items-center" id='test' href="/">                       
-                        <BiCalculator className='me-1 h-5 w-5' />
+                        {/* <BiCalculator className='me-1 h-5 w-5' /> */}
+                        <FiDivideSquare className='me-1 h-5 w-5' />
                         Calculator
                     </Link>
                     <Link className="hover:text-gray-100 flex items-center me-8" href="/feeds">                    
@@ -81,8 +82,8 @@ const Navbar = () => {
             <ul className='bg-neutral-600 text-gray-400 py-2 flex-row justify-items-center w-full hidden md:hidden shadow-sm' id="smallMenu">
                 <li>
                     <div className='w-full flex justify-start ms-10'>
-                        <Link className="hover:text-gray-100 me-8 flex items-center" id='test' href="/">
-                           <BiCalculator className='me-1 h-5 w-5' />
+                        <Link className="hover:text-gray-100 me-8 flex items-center" id='test' href="/">                         
+                           <FiDivideSquare className='me-1 h-5 w-5' />
                             Calculator
                         </Link>
                     </div>
