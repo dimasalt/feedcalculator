@@ -1,11 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'standalone',
-    eslint: {
-        // Warning: This allows production builds to successfully complete even if
-        // your project has ESLint errors.
-        ignoreDuringBuilds: true,
-    },
+    reactStrictMode: false, // Disables strict mode which can trigger hydration warnings
 }
 
 module.exports = nextConfig

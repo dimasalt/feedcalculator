@@ -24,7 +24,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode})
 {
   return (
     <>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <head>           
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           <meta name="description" content="Farm and Beef cattle management software" />
@@ -33,13 +33,13 @@ export default function RootLayout({ children, }: { children: React.ReactNode})
           <meta name="generator" content="" />
           <meta name="robots" content="index, follow, cache" />
           {/* <title></title> */}       
-
+        
           <link rel="icon" type="image/png" href="/assets/cow-16x16.png" sizes="16x16" />
           <link rel="icon" type="image/png" href="/assets/cow-32x32.png" sizes="32x32" />
 
           {/* <!-- Header scripts --> */}
         </head>
-        <body>
+        <body suppressHydrationWarning>
 			
         {/* <!-- cookie component to initiate cookies every time on every page --> */}
         <CookiesComponent />
