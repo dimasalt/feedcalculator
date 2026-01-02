@@ -1,4 +1,4 @@
-import { PrismaClient } from "@/generated/prisma";
+import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -7,8 +7,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async(request: NextRequest)=>  {
     //const body = await request.json();
-
-    const prisma = new PrismaClient();
 
     try {
         const weights = await prisma.feed_requirement.findMany({

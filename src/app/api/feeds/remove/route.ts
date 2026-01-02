@@ -1,6 +1,6 @@
 
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@/generated/prisma";
+import prisma from "@/lib/prisma";
 
   
 //item remove interface
@@ -13,9 +13,6 @@ export const POST = async(request: NextRequest)=>  {
 
     const body = await request.json();
     const feedId: FeedItemId = body;
-
-    //prisma client
-    const prisma = new PrismaClient();
 
     try {
         //remove selected feed based on feed id

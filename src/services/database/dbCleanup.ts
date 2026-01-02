@@ -1,4 +1,4 @@
-import { PrismaClient } from "@/generated/prisma";
+import prisma from "@/lib/prisma";
 
 /**
  * ***********************************************************************
@@ -9,9 +9,6 @@ import { PrismaClient } from "@/generated/prisma";
  */
 
 export const runOnFirstOfMonth = async(userToken: string) => {
-
-    //prisma client
-    const prisma = new PrismaClient();
 
     try 
     {

@@ -1,4 +1,4 @@
-FROM node:24.2-alpine3.22 AS base
+FROM node:24.12-alpine3.22 AS base
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -16,8 +16,9 @@ RUN \
   fi
 
 
-# copy Prisma schema and generate Prisma client
+# copy Prisma schema and config, then generate Prisma client
 COPY prisma ./prisma
+COPY prisma.config.ts ./
 
 # Rebuild the source code only when needed
 FROM base AS builder

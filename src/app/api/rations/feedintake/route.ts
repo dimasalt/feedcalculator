@@ -1,4 +1,4 @@
-import { PrismaClient } from "@/generated/prisma";
+import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -18,9 +18,6 @@ export const POST = async(request: NextRequest)=>  {
     body.adg = parseFloat(body.adg);
     body.startWeight = parseInt(body.startWeight);
     body.endWeight = parseInt(body.endWeight);
-
-    //prisma client
-    const prisma = new PrismaClient();
 
     try {     
 

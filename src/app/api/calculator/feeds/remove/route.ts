@@ -1,6 +1,6 @@
 
 // import promisePool from "@/utils/mysql";
-import { PrismaClient } from "@/generated/prisma";
+import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
   
@@ -11,9 +11,6 @@ export const POST = async(request: NextRequest)=>  {
     //get variables
     const body = await request.json();       
     const id = parseInt(body.id.toString());
-
-    //prisma client
-    const prisma = new PrismaClient();
 
      try{
         await prisma.feed_to_user.delete({

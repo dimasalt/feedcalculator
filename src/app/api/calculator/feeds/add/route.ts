@@ -1,4 +1,4 @@
-import { PrismaClient } from "@/generated/prisma";
+import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
   
@@ -12,9 +12,6 @@ export const POST = async(request: NextRequest)=>  {
 
     //temporary token
     //const userToken:string = '1';
-
-    //prisma client
-    const prisma = new PrismaClient();
 
      //get user token
      const cookie = request.cookies.get('token');

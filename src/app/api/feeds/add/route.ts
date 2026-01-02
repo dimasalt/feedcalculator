@@ -1,8 +1,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { Feed } from '../../../../types/Feed';
-
-import { PrismaClient } from "@/generated/prisma";
+import prisma from "@/lib/prisma";
 
   
 /** Adding new feed to the list */
@@ -14,9 +13,6 @@ export const POST = async(request: NextRequest) =>  {
     //get user token
     const cookie = request.cookies.get('token');
     const userToken:string = cookie?.value ?? '';
-
-    //prisma client
-    const prisma = new PrismaClient();
 
     try 
     {
