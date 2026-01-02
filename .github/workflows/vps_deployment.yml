@@ -6,26 +6,26 @@ on:
       [main]
 jobs:
 
-  build: 
-    runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        node: [ 24 ]
+  # build: 
+  #   runs-on: ubuntu-22.04
+  #   strategy:
+  #     matrix:
+  #       node: [ 24 ]
 
-    name: Build on Node 24 LTS
-    steps:     
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node }}
-          cache: 'npm'
-      - name: Install npm
-        run: npm ci 
-      - name: build Next.js project
-        run: npm run build
+  #   name: Build on Node 24 LTS
+  #   steps:     
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: ${{ matrix.node }}
+  #         cache: 'npm'
+  #     - name: Install npm
+  #       run: npm ci 
+  #     - name: build Next.js project
+  #       run: npm run build
 
   deploy:
-    needs: [build]
+    # needs: [build]
     runs-on: self-hosted
 
     # env:
