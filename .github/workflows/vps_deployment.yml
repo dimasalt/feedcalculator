@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        node: [ 24 ]
+        node: [ 25 ]
 
-    name: Build on Node 24 LTS
+    name: Build on Node 25
     steps:     
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
