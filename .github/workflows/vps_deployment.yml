@@ -14,8 +14,8 @@ jobs:
 
     name: Build on Node 25
     steps:     
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node }}
           cache: 'npm'
@@ -39,7 +39,7 @@ jobs:
     name: Deploys application to VPS
     steps:
       - name: Checkout our main branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       
       - name: Create .env file
         run: |         

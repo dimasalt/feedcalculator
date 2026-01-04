@@ -1,6 +1,6 @@
 ## Cattle Feed Calculator
 
-Free feed calculator for raising baby calves and finishing cattle up to 1000 lbs weight. 
+Free feed calculator for raising baby calves from day 1 to the 1000 lbs weight. 
 
 [Farm Feed Calculator Website](https://www.farmfeedcalculator.com)
 
